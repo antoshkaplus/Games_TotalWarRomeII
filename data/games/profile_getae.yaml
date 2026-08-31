@@ -1,0 +1,13 @@
+TechStats:
+
+Provinces:
+  Dacia:
+    Alias: D
+    Regions: Fortified Settlement,Woodworker,Jeweller,Meeting Hall,Clay Pit|Grain 2,Bronze Workshop,Trench Mine|Village,Cattle Pens,Mineral Spring
+    WantRegions:
+  Thracia:
+    Alias: Th
+    Regions: "Port||Port"
+    WantRegions:
+
+

@@ -1,0 +1,8 @@
+BalcanTribes:
+  Bonus:
+    - "-50% mercenary recruitment cost"
+    - "+50% mercenary upkeep cost"
+  Factions:
+    Getae:
+      - "public order (max +8) from presence of Balcan culture"
+      - "+20% melee attack during battles in own or allied territory"

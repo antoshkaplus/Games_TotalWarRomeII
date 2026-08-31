@@ -1,0 +1,42 @@
+Green:
+    Secure Promo.
+    Improve Relation:
+        +2_L for 3 turns
+        : Z >= 2 + C_target
+    Leisure Time:
+        +1 C
+        : 6_Z & 6_A
+
+Blue:
+    Assasinate:
+        -5_L for 2 turns
+        : C >= 2 + C_target
+    Spread Rumors:
+        -3_L for 4 turns / -1_A_target
+        : C >= 2 + Z_target
+    Gather Support:
+        2% influence / -2_L for 4 turns
+        : 7_Z | 7_A
+    Political Marriage:
+        2_L for 4 turns
+        : 10_L / G_target < G_initiator
+    Entice (join me):
+        -8_L for 2 turns / new member
+        : C >= 2 + A_target
+    Embezzle Funds:
+        -3_L for 4 turns / money
+        : 6_C / must be in town
+
+Yellow:
+    Flirt:
+        initiator +5_G for 2 turns / spouse: -10_G for 2 turns / target spouse: -10_G per 2 turns
+        : C >= 2 + A_target
+    Praise:
+        +10_G for target / +1_Z for target / +3_L for 3 turns
+        : Z >= 2 + C_target
+    Insult:
+        -1_Z_target / -10_G for target / -2_G for all in own party / -5_L for 2 turns if other party
+        : C >= 2 + Z_target
+    Provoke:
+        -1_C_target / more political incidents for 4 turns / -3_L for 3 turns
+        : Z >= 2 + Z_target

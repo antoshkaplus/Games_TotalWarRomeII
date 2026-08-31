@@ -1,0 +1,112 @@
+CAMPAIGN_SAVE_GAME/CAMPAIGN_SAVE_GAME/CAMPAIGN_ENV/CAMPAIGN_MODEL
+
+CAMPAIGN_MAP_DATA
+  PROVINCES_DATA
+    PROVINCE_DATA_ARRAY
+      ...
+      PROVINCE_DATA
+        provice_id
+          ...
+          region_id
+          ...
+      ...
+
+WORLD
+  ...
+  FACTION
+    CAMPAIGN_PLAYER_SETUP
+    FACTION_ECONOMICS
+    DIPLOMACY_MANAGER
+      ...
+      DIPLOMACY_RELATIONSHIP
+      ...
+    ARMY_REINFORCEMENT_MANAGER
+    GOVERNMENT
+    CAMPAIGN_MISSION_MANAGER
+      MISSIONS
+        ...
+        CAMPAIGN_MISSION
+        ...
+    CHARACTER_ARRAY
+      ...
+      CHARACTER
+        LOCOMOTABLE
+        CHARACTER_DETAILS
+      ...
+    FACTION_TECHNOLOGY_MANAGER
+    ARMY_ARRAY
+    CAMPAIGN_POLITICS
+      POLITICAL_PARTIES
+  ...
+
+  REGION_MANAGER
+      ...
+      REGION
+        POPULATION
+        TRAITS # region buffs of some sort possibly.
+        REGION_SLOT_MANAGER
+          ...
+          REGION_SLOT
+            GARRISON_RESIDENCE
+            BUILDING_MANAGER
+          ...
+        SETTLEMENT
+      ...
+
+
+
+
+		31,
+															{
+																"Name" : "ANCILLARY_UNIQUENESS_MONITOR",
+																"Nodes" : [ "STRING ARRAY" ]
+															},
+															{
+																"Name" : "CAMPAIGN_PLAYER_SETUP",
+																"Nodes" : 
+																[
+																	{
+																		"Name" : "CAMPAIGN_PLAYER_SETUP_INGAME_MODIFIABLES",
+																		"Nodes" : [ 254, 254, 254, 2, false, false ]
+																	},
+																	"rom_getae",
+																	true,
+																	true,
+																	false,
+																	0,
+																	"rom_politics_getae_ruler"
+																]
+															},
+
+	2,
+															{
+																"Name" : "ANCILLARY_UNIQUENESS_MONITOR",
+																"Nodes" : [ "STRING ARRAY" ]
+															},
+															{
+																"Name" : "CAMPAIGN_PLAYER_SETUP",
+																"Nodes" : 
+																[
+																	{
+																		"Name" : "CAMPAIGN_PLAYER_SETUP_INGAME_MODIFIABLES",
+																		"Nodes" : [ 2, 2, 2, 0, false, false ]
+																	},
+																	"rom_rome",
+																	false,
+																	true,
+																	false,
+																	0,
+																	""
+																]
+															},
+
+
+
+
+
+SLAVES
+  SLAVES_BLOCK
+FAMILY_TREE
+  count (~3k)
+  FAMILY_MEMBER one by one
+  ends with 0

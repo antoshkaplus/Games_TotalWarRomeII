@@ -1,0 +1,1218 @@
+# TODO: add ground troops for morale.
+
+# Religious
+Sacred Enclosure:
+  culture: 2
+  order: 2
+  parent: ~
+
+Grove of Pleistoros:
+  food: -1
+  order: 3
+  culture: 2
+  wealth_pct_slaves: 5
+  morale_pct: 5
+  parent: Sacred Enclosure
+
+Shrine of Pleistoros:
+  food: -4
+  order: 4
+  culture: 2
+  wealth_pct_slaves: 10
+  morale_pct: 10
+  parent: Grove of Pleistoros
+
+Sanctuary of Pleistoros:
+  food: -8
+  order: 5
+  culture: 2
+  wealth_pct_slaves: 20
+  morale_pct: 20
+
+Grove of Kotys:
+  food: -1
+  order: 3
+  research_pct: 2
+  culture: 3
+  wealth_pct_culture: 5
+  parent: Sacred Enclosure
+
+Shrine of Kotys:
+  food: -4
+  order: 4
+  research_pct: 4
+  culture: 4
+  wealth_pct_culture: 10
+  edict_bread:
+    wealth_pct_agri: 10
+  parent: Grove of Kotys
+
+Sanctuary of Kotys:
+  food: -8
+  order: 6
+  research_pct: 8
+  wealth_pct_culture: 20
+  edict_bread:
+    wealth_pct_agri: 15
+  need_resource: Timber
+  parent: Shrine of Kotys
+
+Grove of Derzelas:
+  food: -1
+  order: 4
+  culture: 3
+  wealth_pct_agri: 5
+  parent: Sacred Enclosure
+
+Shrine of Derzelas:
+  food: -4
+  order: 8
+  culture: 4
+  wealth_pct_agri: 10
+  parent: Grove of Derzelas
+
+Sanctuary of Derzelas:
+  food: -8
+  order: 16
+  culture: 5
+  wealth_pct_agri: 20
+  need_resource: Timber
+  parent: Shrine of Derzelas
+
+Grove of Zalmoxis:
+  food: -1
+  order: 3
+  culture: 3
+  wealth_pct_all: 4
+  wealth_pct_culture: 5
+  edict_bread:
+    wealth_pct_agri: 5
+  parent: Sacred Enclosure
+
+Shrine of Zalmoxis:
+  food: -4
+  order: 4
+  culture: 4
+  wealth_pct_all: 8
+  wealth_pct_culture: 10
+  edict_bread:
+    wealth_pct_agri: 5
+  parent: Grove of Zalmoxis
+
+Sanctuary of Zalmoxis:
+  food: -8
+  order: 6
+  culture: 6
+  wealth_pct_all: 16
+  wealth_pct_culture: 20
+  edict_bread:
+    wealth_pct_agri: 15
+  parent: Shrine of Zalmoxis
+
+Grove of Gebeleizis:
+  food: -1
+  order: 4
+  culture: 3
+  edict_tax:
+    order: 1
+  parent: Sacred Enclosure
+
+Shrine of Gebeleizis:
+  food: -4
+  order: 8
+  culture: 4
+  edict_tax:
+    order: 3
+  parent: Grove of Gebeleizis
+
+Sanctuary of Gebeleizis:
+  food: -8
+  order: 16
+  culture: 5
+  edict_tax:
+    order: 6
+  need_resource: Timber
+  parent: Shrine of Gebeleizis
+
+# Warrior Lodge
+Warrior Lodge:
+  wealth_fun: 50 # entertainment
+  army_cap: 1
+  morale_pct: 5
+  parent: ~
+  cost: 800
+
+Meeting Hall:
+  food: -1
+  wealth_fun: 100
+  order: 2
+  army_cap: 1
+  charge_pct: 10
+  cost: 1700
+  parent: Warrior Lodge
+
+Tavern:
+  food: -4
+  wealth_fun: 250
+  order: 4
+  army_cap: 1
+  charge_pct: 20
+  cost: 4600
+  parent: Meeting Hall
+
+Mead Hall:
+  food: -8
+  wealth_fun: 400
+  order: 6
+  army_cap: 2
+  charge_pct: 30
+  need_resource: Vine
+  cost: 8900
+  parent: Tavern
+
+Meeting Ground:
+  food: -1
+  wealth_fun: 100
+  army_cap: 1
+  melee_infantry_atk_pct: 10
+  melee_infantry_def_pct: 10
+  cost: 1100
+  parent: Warrior Lodge
+
+Proving Grounds:
+  food: -4
+  wealth_fun: 150
+  army_cap: 1
+  melee_infantry_atk_pct: 15
+  melee_infantry_def_pct: 15
+  cost: 1700
+  parent: Meeting Ground
+
+Hall of Champions:
+  food: -8
+  wealth_fun: 200
+  army_cap: 2
+  melee_infantry_atk_pct: 20
+  melee_infantry_def_pct: 20
+  need_resource: Timber
+  cost: 5200
+  parent: Proving Grounds
+
+Jeweller:
+  wealth_mnfr: 100
+  wealth_pct_mining: 10
+  order: -2
+  army_cap: 1
+  morale_pct: 10
+  cost: 2300
+  parent: Warrior Lodge
+
+Enameller:
+  wealth_mnfr: 200
+  wealth_pct_mining: 20
+  order: -4
+  army_cap: 1
+  morale_pct: 15
+  cost: 5200
+  parent: Jeweller
+
+Goldsmith:
+  wealth_mnfr: 300
+  wealth_pct_mining: 30
+  order: -8
+  army_cap: 2
+  morale_pct: 20
+  need_resource: Timber
+  cost: 9500
+  parent: Enameller
+
+# Port
+Port:
+  wealth_mari_com: 30
+  parent: ~
+
+Harbour:
+  wealth_mnfr: 70
+  order: -1
+  parent: Port
+
+Boatyard:
+  wealth_mnfr: 140
+  order: -3
+  parent: Harbour
+
+Raiders Port:
+  wealth_mnfr: 210
+  order: -6
+  need_resource: Timber
+  parent: Boatyard
+
+Fishermen's Huts:
+  food: 6
+  wealth_mari_com: 40
+  order: -2
+  parent: Port
+
+Fishing Village:
+  food: 9
+  wealth_mari_com: 50
+  order: -4
+  parent: Fishermen's Huts
+
+Fishing Port:
+  food: 12
+  wealth_mari_com: 60
+  order: -8
+  need_resource: Timber
+  parent: Fishing Village
+
+# Craftsman's House
+Craftsman's House:
+  wealth_mnfr: 70
+  parent: ~
+
+Woodworker:
+  wealth_mnfr: 80
+  order: -2
+  parent: Craftsman's House
+
+Carpenter:
+  wealth_mnfr: 90
+  order: -4
+  parent: Woodworker
+  need_resource: Timber
+
+Builder's Hall:
+  wealth_mnfr: 100
+  order: -8
+  need_resource: Timber
+  parent: Carpenter
+
+Brine Distiller:
+  wealth_pct_agri: 3
+  wealth_local_com: 100
+  order: -2
+  parent: Craftsman's House
+
+Salt Kiln:
+  wealth_pct_agri: 6
+  wealth_local_com: 175
+  order: -4
+  parent: Brine Distiller
+
+Salt Workshop:
+  wealth_pct_agri: 9
+  wealth_local_com: 250
+  order: -8
+  parent: Salt Kiln
+
+Clay Pit:
+  wealth_mnfr: 140
+  wealth_pct_com: 3
+  order: -2
+  parent: Craftsman's House
+
+Potter:
+  wealth_mnfr: 210
+  wealth_pct_com: 6
+  order: -4
+  parent: Clay Pit
+
+Potter's Workshop:
+  wealth_mnfr: 320
+  wealth_pct_com: 9
+  order: -8
+  parent: Potter
+
+# Water
+Well:
+  growth: 2
+  order: 2
+  parent: ~
+
+Mineral Spring:
+  wealth_fun: 60
+  growth: 3
+  order: 3
+  parent: Well
+
+Sacred Spring:
+  food: -2
+  wealth_fun: 120
+  growth: 4
+  order: 4
+  need_resource: Lead
+  parent: Mineral Spring
+
+Reservoir:
+  food: -1
+  wealth_pct_agri: 5
+  growth: 2
+  order: 2
+  parent: Well
+
+Canals:
+  food: -3
+  wealth_pct_agri: 10
+  growth: 2
+  order: 2
+  need_resource: Lead
+  parent: Reservoir
+
+# Artisan
+Artisan's Lodging:
+  wealth_mnfr: 50
+  parent: ~
+
+Horn Maker:
+  food: -1
+  wealth_mnfr: 80
+  wealth_pct_fun: 4
+  order: 2
+  parent: Artisan's Lodging
+
+Trumpet Maker:
+  food: -2
+  wealth_mnfr: 160
+  wealth_pct_fun: 8
+  order: 4
+  parent: Horn Maker
+
+Carnyx Maker:
+  food: -5
+  wealth_mnfr: 240
+  wealth_pct_fun: 12
+  order: 6
+  need_resource: Timber
+  parent: Trumpet Maker
+
+Coin Maker:
+  food: -1
+  wealth_local_com: 100
+  parent: Artisan's Lodging
+
+Coin Mint:
+  food: -2
+  wealth_local_com: 200
+  parent: Coin Maker
+
+Coin Hoard:
+  food: -5
+  wealth_local_com: 400
+  need_resource: Timber
+  parent: Coin Mint
+
+Bronze Workshop:
+  food: -1
+  wealth_mnfr: 70
+  parent: Artisan's Lodging
+
+Bronze Forge:
+  food: -2
+  wealth_mnfr: 100
+  parent: Bronze Workshop
+
+Bronze Furnace:
+  food: -5
+  wealth_mnfr: 150
+  need_resource: Timber
+  parent: Bronze Forge
+
+# Mine
+Pit Mine:
+  wealth_mining: 100
+  parent: ~
+
+Trench Mine:
+  wealth_mining: 150
+  order: -2
+  parent: Pit Mine
+
+Shaft Mine:
+  wealth_mining: 300
+  order: -4
+  parent: Trench Mine
+
+Sluiced Mine:
+  wealth_mining: 450
+  order: -8
+  parent: Shaft Mine
+
+# Commons
+Commons:
+  wealth_fun: 50
+  order: 1
+  parent: ~
+
+# high levels drive roads
+Slave Trader:
+  wealth_pct_agri: 10
+  wealth_pct_industry: 10
+  wealth_local_com: 100
+  order: -4
+  wealth_pct_slaves: 25
+  parent: Commons
+
+Slave Market:
+  wealth_pct_agri: 20
+  wealth_pct_industry: 20
+  wealth_local_com: 250
+  order: -8
+  wealth_pct_slaves: 50
+  parent: Slave Trader
+
+Farmers' Market:
+  food: -1
+  wealth_pct_agri: 10
+  wealth_local_com: 80
+  parent: Commons
+
+Public Market:
+  food: -4
+  wealth_pct_agri: 20
+  wealth_local_com: 160
+  parent: Farmers' Market
+
+Great Fair:
+  food: -8
+  wealth_pct_agri: 30
+  wealth_local_com: 320
+  need_resource: Vine
+  parent: Public Market
+
+Loremaster's Hut:
+  food: -1
+  wealth_learning: 70
+  research_pct: 5
+  parent: Commons
+
+Bard's Grove:
+  food: -2
+  wealth_learning: 100
+  research_pct: 10
+  parent: Loremaster's Hut
+
+Bardic Circle:
+  food: -5
+  wealth_learning: 150
+  research_pct: 20
+  need_resource: Glassware
+  parent: Bard's Grove
+
+Storage Pit:
+  food: 2
+  wealth_subsistence: 80
+  order: -2
+  repl_pct: 10
+  parent: Commons
+
+Souterrain:
+  food: 4
+  wealth_subsistence: 160
+  order: -4
+  repl_pct: 20
+  parent: Storage Pit
+
+Smokehouse:
+  food: 6
+  wealth_subsistence: 320
+  order: -8
+  repl_pct: 30
+  need_resource: Leather
+  parent: Souterrain
+
+Chieftain's Hold:
+  food: -1
+  wealth_subsistence: 100
+  order: 2
+  parent: Commons
+
+Warlord's Hold:
+  food: -4
+  wealth_subsistence: 150
+  order: 4
+  parent: Chieftain's Hold
+
+Great Hall:
+  food: -8
+  wealth_subsistence: 200
+  order: 6
+  need_resource: Timber
+  parent: Warlord's Hold
+
+High King's Hold:
+  food: -8
+  wealth_subsistence: 400
+  order: 10
+  party_influence: 2
+  need_resource: Timber
+  parent: Great Hall
+
+# Minor Settlement
+Farmstead:
+  alias: h1
+  wealth_pct_all: 1
+  wealth_subsistence: 50
+  growth: 1
+  cost: 1200
+  parent: ~
+
+Village:
+  alias: h2
+  food: -1
+  wealth_pct_all: 2
+  wealth_subsistence: 100
+  growth: 2
+  order: 1
+  cost: 1800
+  parent: Farmstead
+
+Town:
+  alias: h3
+  food: -4
+  wealth_pct_all: 3
+  wealth_subsistence: 150
+  growth: 3
+  order: 2
+  cost: 2700
+  parent: Village
+
+Tribal Pagus:
+  food: -8
+  wealth_pct_all: 6
+  wealth_subsistence: 200
+  growth: 4
+  order: 3
+  cost: 3700
+  parent: Town
+
+Farm Pagus:
+  food: -8
+  wealth_pct_agri: 10
+  wealth_subsistence: 200
+  growth: 4
+  order: 3
+  cost: 3700
+  parent: Town
+
+# Provincial Capital
+Settlement:
+  alias: H1
+  wealth_pct_all: 6
+  wealth_subsistence: 200
+  growth: 3
+  cost: 1500
+  parent: ~
+
+Fortified Settlement:
+  alias: H2
+  food: -1
+  wealth_pct_all: 8
+  wealth_subsistence: 300
+  growth: 5
+  order: 2
+  cost: 2700
+  parent: Settlement
+
+Hundred:
+  alias: H3
+  food: -4
+  wealth_pct_all: 10
+  wealth_subsistence: 400
+  growth: 7
+  order: 4
+  cost: 4400
+  parent: Fortified Settlement
+
+Tribal Oppidum:
+  food: -8
+  wealth_pct_all: 12
+  wealth_subsistence: 800
+  growth: 9
+  order: 8
+  cost: 7100
+  parent: Hundred
+
+Trade Oppidum:
+  food: -8
+  wealth_pct_com: 20
+  wealth_subsistence: 800
+  growth: 9
+  order: 8
+  cost: 7100
+  parent: Hundred
+
+Industry Oppidum:
+  food: -8
+  wealth_pct_industry: 20
+  wealth_subsistence: 800
+  growth: 9
+  order: 8
+  cost: 7100
+  parent: Hundred
+
+# Agricultural
+Enclosed Land:
+  food: 4
+  wealth_farming: 40
+  parent: ~
+
+Horse Pens:
+  food: 4
+  wealth_livestock: 60
+  parent: Enclosed Land
+
+Stables:
+  food: 4
+  wealth_livestock: 80
+  order: -3
+  parent: Horse Pens
+
+Horse Ranch:
+  food: 4
+  wealth_livestock: 100
+  order: -6
+  parent: Stables
+
+Field:
+  food: 7
+  wealth_farming: 60
+  parent: Enclosed Land
+
+Farm:
+  food: 10
+  wealth_farming: 80
+  order: -3
+  parent: Field
+
+Lynchet:
+  food: 15
+  wealth_farming: 100
+  order: -6
+  parent: Farm
+
+Cattle Pens:
+  food: 5
+  wealth_livestock: 100
+  parent: Enclosed Land
+
+Cattle Farm:
+  food: 7
+  wealth_livestock: 175
+  order: -3
+  parent: Cattle Pens
+
+Cattle Ranch:
+  food: 9
+  wealth_livestock: 250
+  order: -6
+  parent: Cattle Farm
+
+# Resources
+Grain 1:
+  food: 1
+  wealth_farming: 40
+  wealth_pct_farming: 10
+  growth: 1
+  parent: ~
+  resource: Y
+
+Grain 2:
+  food: 2
+  wealth_farming: 60
+  wealth_pct_farming: 20
+  growth: 2
+  parent: Grain 1
+  resource: Y
+
+Grain 3:
+  food: 3
+  wealth_farming: 80
+  wealth_pct_farming: 40
+  growth: 3
+  parent: Grain 2
+  resource: Y
+
+Grain 4:
+  food: 4
+  wealth_farming: 100
+  wealth_pct_farming: 80
+  growth: 4
+  parent: Grain 3
+  resource: Y
+
+Horse 1:
+  wealth_livestock: 100
+  growth: 1
+  cavalry_speed_pct: 5
+  parent: ~
+  resource: Y
+
+Horse 2:
+  food: -2
+  wealth_livestock: 200
+  growth: 2
+  cavalry_speed_pct: 10
+  parent: Horse 1
+  resource: Y
+
+Horse 3:
+  food: -6
+  wealth_livestock: 300
+  growth: 3
+  cavalry_speed_pct: 20
+  parent: Horse 2
+  resource: Y
+
+Leather 1:
+  wealth_mnfr: 100
+  wealth_pct_mnfr_faction: 5
+  growth: 1
+  parent: ~
+  resource: Y
+
+Leather 2:
+  food: -1
+  wealth_mnfr: 150
+  wealth_pct_mnfr_faction: 10
+  growth: 2
+  parent: Leather 1
+  resource: Y
+
+Leather 3:
+  food: -4
+  wealth_mnfr: 200
+  wealth_pct_mnfr_faction: 15
+  growth: 3
+  parent: Leather 2
+  resource: Y
+
+Leather 4:
+  food: -8
+  wealth_mnfr: 250
+  wealth_pct_mnfr_faction: 20
+  growth: 4
+  parent: Leather 3
+  resource: Y
+
+Lead 1:
+  wealth_mining: 100
+  growth: 1
+  order_faction: 1
+  parent: ~
+  resource: Y
+
+Lead 2:
+  food: -1
+  wealth_mining: 150
+  growth: 2
+  order_faction: 2
+  resource: Y
+  parent: Lead 1
+
+Lead 3:
+  food: -4
+  wealth_mining: 200
+  growth: 3
+  order_faction: 3
+  resource: Y
+  parent: Lead 2
+
+Lead 4:
+  food: -8
+  wealth_mining: 300
+  growth: 4
+  order_faction: 4
+  wealth_pct_industry: 5
+  resource: Y
+  parent: Lead 3
+
+Iron 1:
+  wealth_mnfr: 100
+  growth: 1
+  armor_pct: 5 # all provinces
+  melee_atk_pct: 5
+  resource: Y
+  parent: ~
+
+Iron 2 Blacksmith:
+  food: -2
+  wealth_mnfr: 200
+  growth: 2
+  armor_pct: 5 # all provinces
+  melee_atk_pct: 10
+  resource: Y
+  parent: Iron 1
+
+Iron 3 Weaponsmith:
+  food: -6
+  wealth_mnfr: 300
+  growth: 3
+  armor_pct: 5 # all provinces
+  melee_atk_pct: 20
+  resource: Y
+  parent: Iron 2 Blacksmith
+
+Iron 2 Shieldmaker:
+  food: -2
+  wealth_mnfr: 200
+  growth: 2
+  armor_pct: 10 # all provinces
+  shield_pct: 10
+  resource: Y
+  parent: Iron 1
+
+Iron 3 Armourer:
+  food: -6
+  wealth_mnfr: 300
+  growth: 3
+  armor_pct: 20 # all provinces
+  shield_pct: 20
+  resource: Y
+  parent: Iron 2 Shieldmaker
+
+Gold 1:
+  wealth_mining: 200
+  wealth_pct_mining_faction: 5
+  growth: 1
+  resource: Y
+  parent: ~
+
+Gold 2:
+  food: -2
+  wealth_mining: 350
+  wealth_pct_mining_faction: 10
+  growth: 2
+  resource: Y
+  parent: Gold 1
+
+Gold 3:
+  food: -4
+  wealth_mining: 500
+  wealth_pct_mining_faction: 15
+  growth: 3
+  resource: Y
+  parent: Gold 2
+
+Gold 4:
+  food: -8
+  wealth_mining: 700
+  wealth_pct_mining_faction: 20
+  wealth_pct_com: 5
+  growth: 4
+  resource: Y
+  parent: Gold 3
+
+Amber 1:
+  wealth_local_com: 150
+  growth: 1
+  order: 1
+  tariff_trade_agree_pct: 2
+  resource: Y
+  parent: ~
+
+Amber 2:
+  food: -1
+  wealth_local_com: 250
+  growth: 2
+  order: 2
+  tariff_trade_agree_pct: 4
+  resource: Y
+  parent: Amber 1
+
+Amber 3:
+  food: -4
+  wealth_local_com: 350
+  growth: 3
+  order: 3
+  tariff_trade_agree_pct: 6
+  resource: Y
+  parent: Amber 2
+
+Amber 4:
+  food: -8
+  wealth_local_com: 500
+  growth: 4
+  order: 4
+  tariff_trade_agree_pct: 8
+  resource: Y
+  parent: Amber 3
+
+Vine 1:
+  wealth_pct_com: 5
+  wealth_local_com: 150
+  growth: 1
+  order_faction: 1
+  resource: Y
+  parent: ~
+
+Vine 2:
+  food: -1
+  wealth_pct_com: 10
+  wealth_local_com: 200
+  growth: 2
+  order_faction: 2
+  resource: Y
+  parent: Vine 1
+
+Vine 3:
+  food: -4
+  wealth_pct_com: 15
+  wealth_local_com: 250
+  growth: 3
+  order_faction: 3
+  resource: Y
+  parent: Vine 2
+
+Vine 4:
+  food: -8
+  wealth_pct_com: 20
+  wealth_local_com: 250
+  growth: 4
+  order_faction: 4
+  resource: Y
+  parent: Vine 3
+
+Lumber 1:
+  wealth_mnfr: 40
+  wealth_pct_industry: 5
+  growth: 1
+  resource: Y
+  parent: ~
+
+Lumber 2:
+  food: -1
+  wealth_mnfr: 60
+  wealth_pct_industry: 10
+  growth: 2
+  order: 1
+  ship_hulls_pct: 5
+  resource: Y
+  parent: Lumber 1
+
+Lumber 3:
+  food: -4
+  wealth_mnfr: 80
+  wealth_pct_industry: 15
+  growth: 3
+  order: 2
+  ship_hulls_pct: 10
+  resource: Y
+  parent: Lumber 2
+
+Lumber 4:
+  food: -8
+  wealth_mnfr: 100
+  wealth_pct_industry: 20
+  growth: 4
+  order: 3
+  ship_hulls_pct: 20
+  resource: Y
+  parent: Lumber 3
+
+Marble 1:
+  const_pct: -5
+  wealth_mining: 100
+  growth: 1
+  order_faction: 1
+  resource: Y
+  parent: ~
+
+Marble 2:
+  const_pct: -10
+  food: -1
+  wealth_mining: 150
+  growth: 2
+  order_faction: 2
+  resource: Y
+  parent: Marble 1
+
+Marble 3:
+  const_pct: -15
+  food: -4
+  wealth_mining: 200
+  growth: 3
+  order_faction: 3
+  resource: Y
+  parent: Marble 2
+
+Marble 4:
+  const_pct: -20
+  food: -8
+  wealth_mining: 300
+  growth: 4
+  order_faction: 4
+  resource: Y
+  parent: Marble 3
+
+Dye 1:
+  wealth_pct_mnfr: 10
+  wealth_local_com: 200
+  growth: 1
+  order_faction: 1
+  resource: Y
+  parent: ~
+
+Dye 2:
+  food: -1
+  wealth_pct_mnfr: 20
+  wealth_local_com: 350
+  growth: 2
+  order_faction: 2
+  resource: Y
+  parent: Dye 1
+
+Dye 3:
+  food: -4
+  wealth_pct_mnfr: 30
+  wealth_local_com: 500
+  growth: 3
+  order_faction: 4
+  resource: Y
+  parent: Dye 2
+
+Dye 4:
+  food: -8
+  wealth_pct_mnfr: 40
+  wealth_local_com: 650
+  growth: 4
+  order_faction: 6
+  resource: Y
+  parent: Dye 3
+
+Glass 1:
+  wealth_mnfr: 100
+  growth: 1
+  researh_pct: 4
+  resource: Y
+  parent: ~
+
+Glass 2:
+  food: -1
+  wealth_mnfr: 150
+  growth: 2
+  order: 1
+  research_pct: 8
+  resource: Y
+  parent: Glass 1
+
+Glass 3:
+  food: -4
+  wealth_mnfr: 200
+  growth: 3
+  order: 2
+  research_pct: 12
+  resource: Y
+  parent: Glass 2
+
+Glass 4:
+  food: -8
+  wealth_mnfr: 300
+  growth: 4
+  order: 3
+  research_pct: 16
+  resource: Y
+  parent: Glass 3
+
+Silk 1:
+  wealth_pct_com_faction: 5
+  wealth_local_com: 100
+  growth: 1
+  resource: Y
+  parent: ~
+
+Silk 2:
+  food: -1
+  wealth_pct_com_faction: 10
+  wealth_local_com: 150
+  growth: 2
+  order: 1
+  resource: Y
+  parent: Silk 1
+
+Silk 3:
+  food: -4
+  wealth_pct_com_faction: 15
+  wealth_local_com: 200
+  growth: 3
+  order: 2
+  resource: Y
+  parent: Silk 2
+
+Silk 4:
+  food: -8
+  wealth_pct_com_faction: 20
+  wealth_local_com: 250
+  growth: 3
+  order: 3
+  resource: Y
+  parent: Silk 3
+
+Olive 1:
+  food: 1
+  wealth_farming: 100
+  wealth_pct_agri_faction: 5
+  growth: 1
+  resource: Y
+  parent: ~
+
+Olive 2:
+  food: 2
+  wealth_farming: 150
+  wealth_pct_agri_faction: 10
+  growth: 2
+  order: 1
+  resource: Y
+  parent: Olive 1
+
+Olive 3:
+  food: 4
+  wealth_farming: 200
+  wealth_pct_agri_faction: 15
+  growth: 3
+  order: 2
+  resource: Y
+  parent: Olive 2
+
+Olive 4:
+  food: 8
+  wealth_farming: 300
+  wealth_pct_agri_faction: 20
+  order: 3
+  growth: 4
+  resource: Y
+  parent: Olive 3
+
+Spice 1:
+  wealth_local_com: 200
+  growth: 1
+  tariff_trade_agree_pct: 2
+  resource: Y
+  parent: ~
+
+Spice 2:
+  food: -2
+  wealth_local_com: 350
+  growth: 2
+  tariff_trade_agree_pct: 4
+  resource: Y
+  parent: Spice 1
+
+Spice 3:
+  food: -4
+  wealth_local_com: 500
+  growth: 3
+  tariff_trade_agree_pct: 6
+  resource: Y
+  parent: Spice 2
+
+Spice 4:
+  food: -8
+  wealth_local_com: 650
+  growth: 4
+  tariff_trade_agree_pct: 8
+  resource: Y
+  parent: Spice 3
+
+
+

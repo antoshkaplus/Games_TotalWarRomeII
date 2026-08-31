@@ -1,0 +1,322 @@
+Civil:
+  Celtic Fields Systems:
+    Bonus:
+      - +1% wealth agri
+    Enables: ["Cattle Farm"]
+    Parent: ~
+
+
+  Iron Tools:
+    Cost: 200
+    Bonus:
+      - -2% agri build cost
+    Enables: ["Farm"]
+    Parent: Celtic Fields Systems
+
+  Animal Husbandry:
+    Bonus:
+      - +2% wealth agri
+    Enables: ["Salt Kiln", "Cattle Ranch"]
+    Parent: Iron Tools
+
+  Celtic Plough:
+    Cost: 500
+    Bonus:
+      - +3% wealth agri
+      - -3% agri build cost
+    Parent: Animal Husbandry
+
+  Crop Rotation:
+    Cost: 1000
+    Bonus:
+      - +4% wealth agri
+      - -4% agri build cost
+    Enables: ["Lynchet"]
+    Parent: Celtic Plough
+
+  Souterrain:
+    Cost: 1600
+    Bonus:
+      - +5% wealth agri
+      - -5% agri build cost
+    Enables: ["Salt Workshop", "Souterrain"]
+    Parent: Crop Rotation
+
+  Grain Kiln:
+    Cost: 2300
+    Bonus:
+      - +6% wealth agri
+      - -6% agri build cost
+    Enables: ["Smokehouse"]
+    Parent: Souterrain
+
+  Craft Specialization:
+    Bonus:
+      - +3% wealth all commerce
+      - +3% tariff income from trade agree
+    Enables: ["Public Market", "Clay Pit"]
+    Parent: Iron Tools
+
+  Timber Trackway:
+    Bonus:
+      - +5% waelth all commerce
+      - +5% tariff income from trade agree
+    Enables: ["Fishing Port", "Potter"]
+    Parent: Craft Specialization
+
+  Intensified Production:
+    Bonus:
+      - +7% wealth all commerce
+      - +7% tariff income from trade agree
+    Enables: ["Great Fair", "Sanctuary of Derzelas", "Potter's Workshop"]
+    Parent: Timber Trackway
+
+
+  Knowledge of the Oak:
+    Bonus:
+      - +5% wealth from culture
+      - -20% political action costs
+    Parent: Celtic Fields Systems
+
+  Sacred Grove:
+    Bonus:
+      -2% corruption in your provinces
+      +6% wealth from culture (all regions)
+      +2 cultural conversion
+      -10% political incident occurrence
+    Enables: ["Loremaster's Hut"]
+
+  Stargazing:
+    Bonus:
+      -3% corruption in your provinces
+      +7% wealth from culture (all regions)
+      +4 cultural conversion
+      -30% political action costs
+      -5% corruption in your provinces
+
+
+  Mint:
+    Bunus:
+      - -2% agent action cost
+      - +2% tax rate
+    Enables: ["Coin Mint"]
+    Parent: Knowledge of the Oak
+
+  Cupellation Furnace:
+    Bonus:
+      - -3% agent action cost
+      - DIGNITARY
+    Enables: ["Goldsmith", "Trumpet Maker"]
+    Parent: Mint
+
+  Celtic Calendar:
+    Bonus:
+      - +3% tax rate
+      - +2 order
+    Enables: ["Carnyx Maker"]
+    Parent: Cupellation Furnace
+
+  Multilingual:
+    Bonus:
+      - -4% agent action cost
+      - +4% tax rate
+      - +3 order
+    Enables: ["Coin Hoard"]
+    Parent: Celtic Calendar
+
+  Land & Community Laws:
+    Bonus:
+      - -6% agent action cost
+      - +6% tax rate
+      - +4 order
+    Enables: ["Sanctuary of Zalmoxis"]
+
+
+  Earth Works:
+    Bonus:
+      - +1 growth
+      - -2% main chain cost
+    Parent: Celtic Fields Systems
+
+  Under Floor Drainage:
+    Bonus:
+      - -3% building const costs
+      - +3 growth per turn
+      - -1 provintial cap and minor settlement main chain construction times
+    Parent: Earth Works
+    Enables: ["Reservoir"]
+
+  Raised Site:
+    Cost: 300
+    Bonus:
+      - -3% building const costs
+      - +2% wealth from industry
+    Parent: Earth Works
+    Enables: ["Hundred"]
+
+  Tax Labour:
+    Cost: 500
+    Bonus:
+      - -5% building const costs
+      - +3% wealth from industry
+    Parent: Raised Site
+    Enables: ["Shaft Mine", "Slave Market"]
+
+  Large Defences:
+    Bonus:
+      -5% building const costs
+      -3% prov and minor settlement main chain construction costs
+    Parent: Tax Labour
+    Enables: ["Town", "Town level resources"]
+
+  Murus Dacius:
+    Bonus:
+      - -7% building const costs
+      - -4% prov and minor settlement const costs
+      - -1 prov cap and minor settlement main chain const times
+    Parent: Large Defences
+    Enables: ["Sluiced Mine", "High Kings Hold"]
+
+  Stone Footing:
+    Cost: 1000
+    Bonus:
+      -5% building construction costs (all regions)
+      +4% wealth from industry (all regions)
+
+
+  Dry Stone Construction:
+    Cost: 1600
+    Bonus:
+      -7% building construction costs (all regions)
+      +6% wealth from industry (all regions)
+
+
+  Enclosed Settlement:
+    Bonus:
+      - -7% build cost
+      - +2 growth
+      - -5% main chain cost
+    Parent:
+
+
+Military:
+  Supply Foraging:
+    Bonus:
+      - +25% ammunition for missile units
+      - CHAMPION
+
+  Advanced Saddle:
+    Bonus:
+      - +3 repl_pct
+      - -5 agent_recr_cost_pct
+      - -2 army_recr_cost_pct
+    Enables: ["Horse 2", "Horse Stables"]
+    Parent: Supply Foraging
+
+  Headhunt:
+    Cost: 400
+    Bonus:
+      - +3 repl_pct
+      - -15 merc_upkeep_cost_pct
+      - -2 army_upkeep_cost_pct
+    Enables: ["Bronze Forge", "Proving Grounds"]
+    Parent: Advanced Saddle
+
+  Cavalry Tactics:
+    Cost: 600
+    Bonus:
+      - +5 repl_pct
+      - -10 agent_recr_cost_pct
+      - -3 army_recr_cost_pct
+      - -3 army_upkeep_cost_pct
+    Enables: ["Horse Ranch", "Horse 3"]
+    Parent: Headhunt
+
+  Infantry Chainmail:
+    Cost: 1000
+    Bonus:
+      - +7 repl_pct
+      - -15 merc_recr_cost_pct
+      - -4 army_rerc_cost_pct
+      - -4 army_upkeep_cost_pct
+    Enables: ["Bronze Furnace", "Iron 2 Blacksmith", "Iron 2 Shieldmaker"]
+    Parent: Cavalry Tactics
+
+  Infantry Drills:
+    Cost: 2600
+    Bonus:
+      - +7 repl_pct
+      - +1 recr_slot
+      - -6 army_rerc_cost_pct
+      - -6 army_upkeep_cost_pct
+    Enables: ["Hall of Champions", "Iron 3 Blacksmith", "Iron 3 Shieldmaker"]
+    Parent: Infantry Chainmail
+
+  Shallow Keel:
+    Cost: 400
+    Bonus:
+      - +3 repl_pct
+      - -2 fleet_recr_cost_pct
+      - -2 fleet_upkeep_cost_pct
+    Enables: ["Boatyard"]
+    Parent: Advanced Saddle
+
+  Oak Construction:
+    Cost: 600
+    Bonus:
+      +5% replenishment rate for all armies and fleets
+      -3% recruitment costs for all ships
+      -3% upkeep cost for all fleets
+    Enables: ["Raider's Port"]
+    Parent: Shallow Keel
+
+  Improved Shipbuilding:
+
+  Iron Anchors:
+
+  Massed Charge:
+    Cost: 300
+    Bonus:
+      +3% movement range for all armies and fleets
+      +3% charge bonus for all land units
+      +3% battle run speed for all land units
+    Parent: Supply Foraging
+
+  War Dance:
+    Cost: 400
+    Bonus:
+      +3% movement range for all armies and fleets
+      +2% melee attack for all units
+      +2% melee defence for all units
+    Enables: ["Meeting Hall"]
+    Parent: Massed Charge
+
+  War Horn:
+    Cost: 600
+    Bonus:
+      +5% movement range for all armies and fleets
+      +5% missile damage for all land units (excluding siege units)
+      +4% charge bonus for all land units
+      +6% shots per minute for all land units (excluding siege units)
+    Enables: Chieftain's Hold
+    Parent: War Dance
+
+  Tribal Totem:
+    Cost: 1000
+    Bonus:
+      +5% movement range for all armies and fleets
+      +3% melee attack for all units
+      +3% melee defence for all units
+    Enables: Tavern
+    Parent: War Horn
+
+  Servants of the Elite:
+    Cost: 1600
+
+  Emergency Measures:
+    Cost: 200
+    Bonus:
+      -3% siege unit costs (all provinces)
+      -20% attritional losses when under siege
+    Enables: Woodworker
+    Parent: Supply Foraging

@@ -1,0 +1,29 @@
+Taxes:
+  - tax_pct: -30
+    order: -1
+    growth: 0
+  - tax_pct: -10
+    order: -3
+    growth: 0
+  - tax_pct: 10
+    order: -5
+    growth: 0
+  - tax_pct: 30
+    order: -12
+    growth: -1
+  - tax_pct: 50
+    order: 20
+    growth: -3
+
+MaxFoodSurplus:
+  food: 20
+  repl_pct: 20
+  growth: 5
+
+MinOrder:
+  tax_pct: -16
+  growth: -8
+
+MaxOrder:
+  tax_pct: 8
+  growth: 6

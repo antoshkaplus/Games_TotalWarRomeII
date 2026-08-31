@@ -1,0 +1,13 @@
+Spears:
+  cost: 220
+
+
+Spear Warriors:
+  cost: 300
+  maintain: 100/90
+  plague_recover_days: 5
+
+
+
+General unit recovers even longer: 7
+In that case - just disband the whole thing and get a new one

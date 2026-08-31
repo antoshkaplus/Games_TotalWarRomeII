@@ -1,0 +1,132 @@
+Darcia:
+    order: -3, food: -4, wealth: 3794.5, [
+    {'Mead Hall', 'Lynchet', 'Tribal Oppidum', 'Sanctuary of Zalmoxis', 'Proving Grounds'},
+    {'Grain 4', 'Bronze Furnace', 'Cattle Ranch'},
+    {'Tribal Pagus', "Builder's Hall", 'Cattle Ranch'}]
+Thracia
+    order: -2, food: -2, wealth: 5350.0, [
+    {'Smokehouse', 'Mead Hall', 'Lynchet', "High King's Hold", 'Tribal Oppidum'},
+    {'Fishing Port', 'Sanctuary of Zalmoxis', 'Sluiced Mine', 'Tribal Pagus'},
+    {'Fishing Port', 'Sanctuary of Zalmoxis', 'Cattle Ranch', 'Tribal Pagus'}]
+Pannonia:
+    order: -2, food: -8, wealth: 4535.0, [
+    {'Cattle Ranch', 'Lynchet', "High King's Hold", 'Tribal Oppidum', 'Coin Hoard'},
+    {'Grain 4', , 'Horse Ranch', 'Coin Hoard'},
+    {'Sanctuary of Zalmoxis', 'Iron 3 Armourer', 'Sluiced Mine'}]
+Illyria:
+    order: -1, food: -2, wealth: 5320.6, [
+    {'Tribal Oppidum', 'Smokehouse', "High King's Hold", 'Lynchet', 'Mead Hall'},
+    {'Fishing Port', 'Sanctuary of Zalmoxis', 'Sluiced Mine', 'Tribal Pagus'},
+    {'Fishing Port', 'Sanctuary of Zalmoxis', 'Cattle Ranch', 'Marble 4'}]
+
+
+
+Macedonia
+    order: 0, food: -8, wealth: 5524.3, [
+    {"High King's Hold", 'Fishing Port', 'Great Fair', 'Cattle Ranch', 'Sanctuary of Zalmoxis', 'Tribal Oppidum'},
+    {'Cattle Ranch',  'Fishing Port', 'Coin Hoard', 'Vine 4'},
+    {'Cattle Ranch', 'Sanctuary of Zalmoxis', 'Horse 3'}]
+
+
+Ponto-Caspia:
+    order: -2, food: -7, wealth: 5971.6, [
+    {'Lynchet', 'Tribal Oppidum', 'Smokehouse', 'Mead Hall', 'Bardic Circle'},
+    {'Fishing Port', 'Sanctuary of Zalmoxis', 'Cattle Ranch', 'Tribal Pagus'},
+    {'Sanctuary of Zalmoxis', 'Horse 3', 'Cattle Ranch'},
+    {'Sanctuary of Zalmoxis', 'Cattle Ranch', 'Tribal Pagus'}]
+
+Hercynia
+    order: 2, food: -18,
+    [{'Bronze Furnace', 'Industry Oppidum', 'Lynchet', 'Goldsmith', 'Proving Grounds'},
+    {'Sluiced Mine', 'Gold 4', 'Sanctuary of Derzelas'}]
+
+Illyria:
+    order: 10, food: -20, wealth: 4038.0, [
+    {'Tavern', 'Enameller', 'Shrine of Zalmoxis', 'Tribal Oppidum', 'Shrine of Gebeleizis'},
+    {'Sluiced Mine', 'Marble 4', 'Fishing Village', 'Trumpet Maker'},
+    {'Sluiced Mine', 'Mineral Spring', 'Fishing Village', 'Tribal Pagus'}]
+Borboros:
+    order: 1, food: 2, wealth: 5396.0, [
+    {'Tribal Oppidum', 'Coin Hoard', 'Mead Hall', 'Fishing Port', "High King's Hold", 'Cattle Ranch'},
+    {'Vine 4', 'Sanctuary of Zalmoxis', 'Cattle Ranch', 'Fishing Port'},
+    {'Sanctuary of Zalmoxis', 'Cattle Ranch', 'Tribal Pagus', 'Fishing Port'}]
+
+
+
+Hellas
+    order: 11, food: -5, wealth: 4411.6, [
+    {'Tribal Oppidum', "High King's Hold", 'Cattle Ranch', 'Lynchet', 'Raiders Port', 'Mead Hall'},
+    {'Marble 4', 'Sanctuary of Derzelas', 'Lynchet'},
+    {'Raiders Port', 'Coin Hoard', 'Cattle Ranch', 'Tribal Pagus'}]
+Bithynia en Pontus
+    order: 11, food: 0, wealth: 5462.8, [
+    {'Raiders Port', 'Cattle Ranch', 'Sanctuary of Derzelas', 'Lynchet', 'Tribal Oppidum', "High King's Hold"},
+    {'Tribal Pagus', 'Cattle Ranch', 'Sanctuary of Derzelas'},
+    {'Fishing Port', 'Lumber 4', 'Cattle Ranch', 'Coin Hoard'},
+    {'Fishing Port', 'Carnyx Maker', 'Tribal Pagus', 'Sluiced Mine'}]
+Syria:
+    order: 12, food: -38, wealth: 7266.2, [
+    {'Lynchet', 'Coin Hoard', 'Mead Hall', 'Slave Market', 'Raiders Port', 'Tribal Oppidum'},
+    {'Raiders Port', 'Sanctuary of Kotys', 'Dye 4', 'Sanctuary of Zalmoxis'},
+    {'Glass 4', 'Lynchet', 'Sanctuary of Zalmoxis'},
+    {'Cattle Ranch', 'Tribal Pagus', 'Sanctuary of Zalmoxis'}]
+Mesopotamia:
+    order: 10, food: 12, wealth: 5492.0, [
+    {'Mead Hall', 'Sanctuary of Derzelas', 'Sanctuary of Zalmoxis', 'Tribal Oppidum', 'Cattle Ranch'},
+    {'Silk 4', 'Coin Hoard', 'Lynchet'},
+    {'Lynchet', 'Grain 4', 'Cattle Ranch', 'Fishing Port'},
+    {'Sanctuary of Zalmoxis', 'Cattle Ranch', 'Tribal Pagus', }]
+Magna Graecia
+    order: 10, food: 27, wealth: 5448.8, [
+    {'Mead Hall', 'Fishing Port', 'Tribal Oppidum', 'Lynchet', 'Sanctuary of Derzelas', 'Cattle Ranch'},
+    {'Cattle Ranch', 'Sanctuary of Derzelas', 'Tribal Pagus', 'Fishing Port'},
+    {'Fishing Port', 'Sanctuary of Zalmoxis', 'Grain 4', 'Cattle Ranch'},
+    {'Sanctuary of Zalmoxis', 'Tribal Pagus', 'Cattle Ranch'}]
+Persia:
+   order: 10, food: -8, wealth: 4461.799999999999, [
+   {'Mead Hall', 'Lynchet', 'Tribal Oppidum', "High King's Hold", 'Smokehouse'},
+   {'Glass 4', 'Sanctuary of Zalmoxis', 'Lynchet'},
+   {'Tribal Pagus', 'Coin Hoard', 'Cattle Ranch'}]
+Arabia Magna
+    order: 11, food: -2, wealth: 4675.0, [
+    {"High King's Hold", 'Sanctuary of Zalmoxis', 'Cattle Ranch', 'Fishing Port', 'Tribal Oppidum', 'Mead Hall'},
+    {'Marble 4', 'Cattle Ranch', 'Lynchet'},
+    {'Tribal Pagus', 'Cattle Ranch', 'Sanctuary of Zalmoxis'}]
+Provincia
+    order: 13, food: 1, wealth: 3900.8, [
+    {'Fishing Port', "High King's Hold", 'Cattle Ranch', 'Tribal Oppidum', 'Mead Hall', 'Coin Hoard'},
+    {'Olive 4', 'Cattle Ranch', 'Sanctuary of Zalmoxis'}]
+Ponto-Caspia:
+    order: 16, food: -18, wealth: 6214.0, [
+    {'Tribal Oppidum', 'Cattle Ranch', 'Lynchet', "High King's Hold", 'Mead Hall'},
+    {'Sanctuary of Zalmoxis', 'Cattle Ranch', 'Fishing Port', 'Tribal Pagus'},
+    {'Horse 3', 'Carnyx Maker', 'Coin Hoard'},
+    {'Sanctuary of Zalmoxis', 'Cattle Ranch', 'Tribal Pagus'}]
+Sarmatia
+    order: 6, food: -3, wealth: 3672.0, [
+    {'Trumpet Maker', 'Cattle Ranch', 'Tribal Oppidum', 'Lynchet', 'Slave Market'},
+    {'Shrine of Derzelas', 'Shrine of Zalmoxis', 'Leather 4'},
+    {'Trumpet Maker', 'Amber 4', 'Cattle Ranch'}]
+
+Ponto-Caspia:
+    order: 4, food: -7, wealth: 4935.2, [
+    {'Tribal Oppidum', 'Lynchet', 'Cattle Ranch', 'Smokehouse', "High King's Hold"},
+    {'Sanctuary of Gebeleizis', 'Tribal Pagus', 'Sanctuary of Kotys', 'Fishing Port'},
+    {'Sluiced Mine', 'Tribal Pagus', 'Coin Hoard'}
+    {'Horse 3', 'Coin Hoard', 'Lynchet'},]
+Bosporus:
+    order: 9, food: 1, wealth: 4314.4, [
+    {'Shrine of Pleistoros', 'Sanctuary of Gebeleizis', 'Fishing Port', 'Tribal Oppidum', 'Coin Hoard', "High King's Hold"},
+    {'Vine 4', 'Fishing Port', 'Lynchet', 'Coin Hoard'},
+    {'Tribal Pagus', 'Cattle Ranch', 'Fishing Port', 'Coin Hoard'}]
+Caucasia:
+    order: 5, food: -3, wealth: 4904.0, [
+    {'Lynchet', 'Sanctuary of Derzelas', 'Tribal Oppidum', "High King's Hold", 'Cattle Ranch'},
+    {'Gold 4', 'Cattle Ranch', 'Sluiced Mine'},
+    {'Cattle Ranch', 'Coin Hoard', 'Tribal Pagus'}]
+
+Scythia
+    order: 5, food: 3, wealth: 3966.0, [
+    {'Cattle Ranch', 'Sanctuary of Derzelas', "High King's Hold", 'Lynchet', 'Tribal Oppidum'},
+    {'Lynchet', 'Leather 4', 'Cattle Ranch'},
+    {'Tribal Pagus', 'Coin Hoard', 'Sluiced Mine'}]

@@ -1,0 +1,193 @@
+- id: rome_main_arabia_felix
+  display_name: Arabia Felix
+  capital_region_id: rom_arabia_felix_saba
+  regions: 
+	- id: rom_arabia_felix_saba
+    display_name: Marib
+	- id: rom_arabia_felix_himyar
+    display_name: Eudaemon
+	- id: rom_arabia_felix_maka
+    display_name: Maas-gat
+
+- id: rome_main_illyria
+  display_name: Illyria
+  capital_region_id : rom_illyria_dalmatia
+  regions:
+  - id: rom_illyria_liburnia
+    display_name: Iader
+  - id: rom_illyria_dalmatia
+    display_name: Delminium
+  - id: rom_illyria_illyria
+    display_name: Epidamnos
+
+- id: rome_main_arabia_magna
+  display_name: Arabia Magna
+  capital_region_id: rom_arabia_magna_dilmun
+  regions: 
+  - id: rom_arabia_magna_dilmun
+    display_name: 
+  - id: rom_arabia_magna_lathrippa
+    display_name:
+  - id: rom_arabia_magna_kedar
+    display_name: 
+
+- id: rome_main_silesia
+  display_name: Silesia
+  capital_region_id: rom_silesia_silesia
+  regions: 
+  - id: rom_silesia_silesia
+    display_name: 
+  - id: rom_silesia_leda
+    display_name: 
+
+- id: rome_main_caucasia
+  display_name: Caucasia
+  capital_region_id : rom_caucasia_iberia
+  regions:
+  - id: rom_caucasia_colchis
+    display_name: Phasis
+  - id: rom_caucasia_albania
+    display_name:
+  - id: rom_caucasia_iberia
+    display_name:
+  
+- id: rome_main_thracia
+  display_name: Thracia
+  capital_region_id : rom_thracia_thracia
+  regions:
+  - id: rom_thracia_moesia
+    display_name: 
+  - id: rom_thracia_byzantion
+    display_name:
+  - id: rom_thracia_dardania
+    display_name:
+  - id: rom_thracia_thracia
+    display_name:
+
+- id: rome_main_caucasia
+  display_name: Caucasia
+  capital_region_id : rom_caucasia_iberia
+  regions:
+  - id: rom_caucasia_colchis
+    display_name: Phasis
+  - id: rom_caucasia_albania
+    display_name:
+  - id: rom_caucasia_iberia
+    display_name:
+  
+
+
+"capital_region_id" : "rom_persis_parsa",
+		"id" : "rome_main_persis",
+		"region_ids" : [ "rom_persis_elam", "rom_persis_parsa", "rom_persis_lyan" ]
+
+
+
+
+	"capital_region_id" : "rom_italia_latium",
+		"id" : "rome_main_italia",
+		"region_ids" : 
+		[
+			"rom_italia_samnium",
+			"rom_italia_picenum",
+			"rom_italia_etruria",
+			"rom_italia_latium"
+		]
+
+
+	"capital_region_id" : "rom_aria_aria",
+		"id" : "rome_main_aria",
+		"region_ids" : [ "rom_aria_margiana", "rom_aria_aria", "rom_aria_drangiana" ]
+
+
+
+	"capital_region_id" : "rom_belgica_silva_carbonaria",
+		"id" : "rome_main_belgica",
+		"region_ids" : [ "rom_belgica_silva_carbonaria", "rom_belgica_arduenna_silva" ]
+
+
+		"capital_region_id" : "rom_magna_germania_silva_bacenis",
+		"id" : "rome_main_magna_germania",
+		"region_ids" : 
+		[
+			"rom_magna_germania_silva_bacenis",
+			"rom_magna_germania_silva_nigra",
+			"rom_magna_germania_frisia"
+		]
+
+
+	"capital_region_id" : "rom_suebia_lusatia",
+		"id" : "rome_main_suebia",
+		"region_ids" : 
+		[
+			"rom_suebia_cimbria",
+			"rom_suebia_lusatia",
+			"rom_suebia_bomeranorum",
+			"rom_suebia_rugia"
+		]
+
+
+
+	"capital_region_id" : "rom_baetica_baeturia",
+		"id" : "rome_main_baetica",
+		"region_ids" : [ "rom_baetica_turdetania", "rom_baetica_baeturia" ]
+
+
+"capital_region_id" : "rom_dacia_dacia_superior",
+		"id" : "rome_main_dacia",
+		"region_ids" : 
+		[
+			"rom_dacia_dacia_superior",
+			"rom_dacia_dacia_inferior",
+			"rom_dacia_bastarnia"
+		]
+
+
+		"capital_region_id" : "rom_scythia_turan",
+		"id" : "rome_main_scythia",
+		"region_ids" : [ "rom_scythia_usturt", "rom_scythia_turan", "rom_scythia_scythia" ]
+
+
+
+"capital_region_id" : "rom_arachosia_arachosia",
+		"id" : "rome_main_arachosia",
+		"region_ids" : [ "rom_arachosia_arachosia", "rom_arachosia_paropamisadae" ]
+
+
+
+	"capital_region_id" : "rom_phazania_zinchecra",
+		"id" : "rome_main_phazania",
+		"region_ids" : [ "rom_phazania_tidamensi", "rom_phazania_zinchecra" ]
+
+
+
+	"capital_region_id" : "rom_syria_syria",
+		"id" : "rome_main_syria",
+		"region_ids" : 
+		[
+			"rom_syria_phonecia",
+			"rom_syria_syria",
+			"rom_syria_eremos_syria",
+			"rom_syria_aram"
+		]
+
+
+
+
+
+
+
+
+Asia:
+  wealth_pct_mnfr: 20
+Africa:
+  wealth_pct_com: 25
+Baktria:
+  siege_holdout_time_double_city_port: 2
+Italia:
+  wealth_pct_all: 15
+  army_recr_slots: 2
+Macedonia:
+  wealth_pct_industry: 25
+Syria:
+  order: 6

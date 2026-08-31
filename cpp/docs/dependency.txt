@@ -1,0 +1,10 @@
+# for user generated files, as it's easier to edit.
+yaml-cpp: libyaml-cpp-dev
+# for machine generated files, as it's more formal
+# and could be easier to read complex structures.
+json-cpp: libjsoncpp-dev
+
+# Need to parse save file COMPRESSED_DATA.
+liblzma-dev
+
+boost: libboost-all-dev

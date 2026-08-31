@@ -1,0 +1,61 @@
+
+SPY:
+    AB: Supplier, Hunter - but needs to be with the army.
+        Watchman - only lategame.
+        Conspirator - must go with something else.
+
+    AB is not very useful
+
+    CB: Toxic - get rid of enemy army, reduce their speed.
+        Thief - gets you some money from enemy agents, but probably not worth it.
+        Discord - good for stalling hiring in enemy settlement. Just early game.
+
+    ZB: Deadly, Menace, Military Espionage, Sabotour - makes most sense. Since don't need to travel with the army
+        but does the job of weakinging the enemy the most.
+
+CHAMPION:
+    CB: Murderous - against garisons, Intimidating, Resourceful
+
+    ZB: Sadistic - to move fast, but must be inside parentA. Terrifing - against enemy morale.
+
+DIGNITARY:
+    AB: Economist - reduce upkeep parentA
+        Diplomatic - diplomacy with owner of region
+
+    CB: Greedy - get gold
+        Strict - late game taxes
+        Silver Tongue - diplomacy with all
+        Smuggler - must with parentA
+
+    ZB: Leader - cultural conversion - usually easier to just build religion.
+
+GENERAL:
+    AB: Infantry Command -melee atk, missile range
+        Wolf - melee atk
+        Stag - cav charge / move speed
+        Brute - reduce enemy morale, commander unit +
+
+    CB: Strategist, Tactician, Logistics, Sentinel - good for melee def buf
+
+    ZB: Warrior, Soldier, Defence, Offence, Dread, Fearless Warrior
+
+
+PUBLIC ORDER:
+    if culture prevalent: 1-8 buf
+    tech 9 but takes long time to get there.
+    many debufs later will go away with taking over certain resources.
+
+
+To improve research has to build "Loremaster's Hut"
+20 food surplus is max for growth and army replenishment
+
+Ctrl helps to start troop rotation while drugging.
+It also controls if troops should run or walk.
+
+Vilitary Victory:
+Dacia, Macedonia, Syria, Illyria, Persis, Italia
+
+
+
+
+

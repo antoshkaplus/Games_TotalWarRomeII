@@ -1,0 +1,415 @@
+Spy:
+  Actions:
+    Reconnoitre:
+    Misdirection:
+    Infiltration:
+    SabotageSupplies:     Reduce move range of enemy army | CB
+    Guide:                When joins army increases move speed
+    StealFood:            When deployed in enemy region steals some food | ZB
+    CounterIngelligence:  When deployed in our region, detects hidden agents and armies in area | AB
+    Steal:                Steal from enemy agent
+    Assassinate:          Kill enemy agent or general
+    DestroyAmmunition:    Reduce ammunition of enemy army
+  Skills:
+    AB:
+      Network:
+        - A: [1, 2, 3]
+        - exp ranks for new agents in LocP whileD: [1, 2, 3]
+        - agent recr costs pct in LocP whileD | AB: [-10, -20, -30]
+      Supplier:
+        - A: [1, 2, 3]
+        - units replenishment pct in local region whileD | AB: [2, 4, 6]
+        - units replenishment pct in parentA | AB: [2, 4, 6]
+      Watchman:
+        - A: [1, 2, 3]
+        - negative public order pct in locP whileD | AB: [-10, -20, -30]
+        - corruption pct factionwide: [1, 2, 3]
+      Despoiler:
+        - 'UNLOCK: Burn Ammunition: ammunition pct for all target enemy units | AB': [-10, -20, -30]
+        - A: [1, 2, 3]
+      Hunter:
+        - A: [2, 4, 6]
+        - map move pct parentA: [10, 20, 30]
+        - missile dmg pct for all land units parentA | AB: [5, 10, 15]
+        - missile range pct for all land units in parentA, excl siege | AB: [5, 10, 15]
+      Conspirator:
+        - A: [2, 4, 6]
+        - success pct for all agents after this agents success | AB: [3, 6, 9]
+        - success pct on all actions: [5, 10, 15]
+    CB:
+      Hideout:
+        - C: [1, 2, 3]
+        - sight, parentA too | CB: [5, 10, 15]
+        - success pct ambush parentA or local region whileD | CB: [4, 8, 12]
+      Coordinator:
+        - C: [1, 2, 3]
+        - map move range pct parentA | CB: [3, 6, 9]
+        - reinforcement range for parentA: [20, 35, 50]
+      Toxic:
+        - C: [2, 4, 6]
+        - casualties in all units pct after success sabotage supplies: [5, 10, 15]
+        - map range pct enemyA after success sabotage supplies | CB: [-5, -10, -15]
+      Thief:
+        - C: [1, 2, 3]
+        - 'UNLOCK: Steal: steal enemy agent gold and ancillary as well as reducing their chance of success'
+        - after success robbing enemy agent | CB: [200, 400, 600]
+        - ancillary stolen from enemy agent: 1
+        - success pct of robbed agent  | CB: [-4, -8, -12]
+      Tracker:
+        - C: [1, 2, 3]
+        - map range pct for agent: [10, 20, 30]
+        - agents, armies or settlements revealed in neighbouring regions whileD | CB: [1, 2, 3]
+      Discord:
+        - C: [2, 4, 6]
+        - constrction and recr costs pct in local enemy province whileD | CB: [20, 40, 60]
+        - construction and recr time in local enemy province whileD: [1, 2, 3]
+    ZB:
+      Counterspy:
+        - Z: [1, 2, 3]
+        - success pct in actions against enemy agents and generals: [5, 10, 15]
+        - campaign map move range pct for enemy after success Misdirection | ZB: [-5, -10, -15]
+      Looter:
+        - Z: [1, 2, 3]
+        - gold pct from looting settlements for parentA | ZB: [30, 60, 90]
+      Deadly:
+        - Z: [2, 4, 6]
+        - 'UNLOCK: Assasinate: kill enemy agent or general'
+        - kill target pct during assasination: [25, 50, 75]
+      Menace:
+        - Ranks: [1, 2, 3]
+        - Z: [1, 2, 3]
+        - public order in local province whileD | ZB: [-1, -2, -3]
+        - chance pct of being detected by enemies: [20, 40, 60]
+        - food stolen whileD in enemy province | ZB: [1, 2, 3]
+      Military Espionage:
+        - Z: [1, 2, 3]
+        - research pct whileD on enemy territory | ZB: [7, 14, 21]
+      Sabotour:
+        - Z: [2, 4, 6]
+        - armor pct for units of all enemy forces in local region whileD | ZB: [-4, -7, -10]
+        - weapon damage pct for all enemy forces in local region whileD | ZB: [-4, -7, -10]
+Champion:
+  Actions:
+    RallySlaves:
+
+  Skills:
+    AB:
+      Drill Sergeant:
+        - A: [1, 2, 3]
+        - melee atk pct commander unit | AB: [3, 6, 9]
+        - melee def commander unit | AB: [3, 6, 9]
+        - unit exp per turn parent army | AB: [40, 70, 100]
+      Drunkard:
+        - A: [1, 2, 3]
+        - growth per turn in local province whileD | AB: [4, 7, 10]
+        - public order in local province whileD: [-4, -7, -10]
+      Renowned:
+        - A: [2, 4, 6]
+        - melee atk pct for all units in local province whileD | AB: [5, 10, 15]
+        - morale pct for all units in local province whileD | AB: [5, 10, 15]
+        - public order in local province whileD | AB: [5, 10, 15]
+      Explorer:
+        - A: [1, 2, 3]
+        - map move range pct: [10, 20, 30]
+        - wealth pct adv | AB: [100, 200, 300]
+      Agitator:
+        - A: [1, 2, 3]
+        - UNLOCKS RallySlaves, public order change, can cause insta rebellion | AB: [-5, -10, -15]
+      Inspirational:
+        - A: [2, 4, 6]
+        - morale pct for all units factionwide after success assassination | AB: [2, 4, 6]
+    CB:
+      Wicked:
+        - C: [1, 2, 3]
+        - mov range pct after failed ass | CB: [-5, -10, -15]
+        - wounding enemy agents pct in self-def: [4, 8, 12]
+      Nocturnal:
+        - C: [1, 2, 3]
+        - morale pct for all units during night battles in parent army | CB: [3, 6, 9]
+        - enables night battles on land and at sea
+      Murderous: # this is probably about action of attacking the garrison
+        - C: [2, 4, 6]
+        - public order in LocP after attacking the garrison of enemy settlement | CB: [-5, -10, -15]
+        - repl in local region after attacking the garrison of an enemy settlement | CB: [-5, -10, -15]
+        - casualties for all garrison units pct: [10, 20, 30]
+      Intimidating:
+        - C: [1, 2, 3]
+        - morale pct for all enemy units in local region whileD: [-3, -6, -9]
+      Trapper:
+        - C: [1, 2, 3]
+        - 'UNLOCK: Trap: reduce enemy agent movement pct, reduces their attr | CB': [-10, -20, -30]
+        - reduce all attr of trapped enemy agent | CB: [-1, -2, -3]
+      Resourceful:
+        - C: [2, 4, 6]
+        - action costs pct for this agent: [-25, -50, -75]
+        - wealth gained after a success action | CB: [400, 800, 1200]
+    ZB:
+      Arsonist:
+        - Z: [1, 2, 3]
+        - 'UNLOCK: Commit Arson: dmg pct to a single building in an enemy settlement | ZB': [10, 20, 30]
+      Sadistic:
+        - Z: [1, 2, 3]
+        - morale change for all units of parent army | ZB: [-2, -4, -6]
+        - map move range pct parentA | ZB: [10, 15, 20]
+      Heroic:
+        - Z: [2, 4, 6]
+        - agent map move range pct: [-5, -10, -15]
+        - success all actions pct: [5, 10, 15]
+        - success for hostile actions against agent: [-5, -10, -15]
+      Frenzied:
+        - Z: [1, 2, 3]
+        - charge pct bonus for all units in parent army | ZB: [20, 40, 60]
+        - 'UNLOCK: Frenzy:'
+        - cooldown on Frenzy fot all units | ZB: [-5, -10, -15]
+      Terrifying:
+        - Z: [1, 2, 3]
+        - 'UNLOCK: DemoralizeArmy: demoral pct all units in enemy army | ZB': [-4, -8, -12]
+      Militant:
+        - Z: [2, 4, 6]
+        - unit morale pct upon recruitment local province whileD | ZB: [2, 4, 6]
+        - army recruitment cap whileD: [1, 2, 3]
+
+Dignitary:
+  Skills:
+    AB:
+      Economist:
+        - A: [1, 2, 3]
+        - unit recr cost pct localP whileD | AB: [-4, -7, -10]
+        - unit upkeep costs for units in parentA | AB: [-4, -7, -10]
+      Orator:
+        - A: [1, 2, 3]
+        - 'UNLOCK: Convert: increade cultural conversion in target settlement | AB': [5, 10, 15]
+      Herder:
+        - A: [1, 2, 3]
+        - upkeep pct cav parentA | AB: [-5, -10, -15]
+        - move range pct parentA | AB: [3, 6, 9]
+      Persuasive:
+        - A: [1, 2, 3]
+        - action cost pct: [10, 20, 30]
+        - 'UNLOCK: Bribe Commander: Joins your faction'
+        - success pct all actions: [3, 6, 9]
+      Diplomatic:
+        - diplomacy with owner of localR whileD | AB: [20, 40, 60]
+        - A: [2, 4, 6]
+      Tutor:
+        - experience gained through success recruit enemy agent | AB: [10, 15, 20]
+        - experience gained by other agent and generals in localR whileD: [3, 6, 9]
+        - A: [2, 4, 6]
+    CB:
+      Greedy:
+        - C: [1, 2, 3]
+        - diplomacy penalty with owner of local region whileD: [-20, -40, -60]
+        - gold stolen pct while deployed in enemy territory | CB: [25, 50, 75]
+      Strict:
+        - public order in localP whileD | CB: [-1, -2, -3]
+        - tax rate pct in local province whileD | CB: [5, 10, 15]
+        - C: [1, 2, 3]
+      Fanatic:
+        - C: [1, 2, 3]
+        - "UNLOCK: Blood Sacrifice: Kill enemy agent or general and increase public order everywhere | CB": [1, 2, 3]
+      Vower:
+        - C: [1, 2, 3]
+        - mercenary hire cost pct in localP whileD | CB: [-1, -2, -3]
+        - mercenaries pct in localP whileD | CB: [5, 10, 15]
+      Silver Tongue:
+        - diplomacy with all factions | AB: [5, 10, 15]
+        - chance success pct all actions: [5, 10, 15]
+        - C: [2, 4, 6]
+      Smuggler:
+        - pct dmg for weapon melee in parentA | CB: [3, 6, 9]
+        - pct dmg of all land units in parentA | CB: [3, 6, 9]
+        - C: [2, 4, 6]
+    ZB:
+      Advisor:
+        - Z: [1, 2, 3]
+        - plus all attributes for parent army general: [1, 2, 3]
+        - loyalty for the political party parent general belongs to | ZB: [2. 4, 6]
+      Underhanded:
+        - 'UNLOCK: Discredit: Reduce attr of enemy agent or general by': [-1, -2, -3]
+        - Z: [1, 2, 3]
+        - chance of critical success pct on everything: [3, 6, 9]
+      Chant:
+        - Z: [1, 2, 3]
+        - melee atk pct parentA | ZB: [5, 10, 15]
+        - morale pct parentA | ZB: [5, 10, 15]
+      Warmonger:
+        - Z: [1, 2, 3]
+        - melee atk pct upon recruit whileD | ZB: [1, 2, 3]
+        - morale pct upon recruit localP whileD | ZB: [1, 2, 3]
+        - wealth all sources pct | ZB: [-3, -6, -9]
+        - recruit slots localP whileD: [1, 2, 3]
+      Corrupt:
+        - loyalty to political party rulling region whileD | ZB: [5, 10, 15]
+        - upkeep per turn whileD: [500, 1000, 1500]
+        - Z: [2, 4, 6]
+      Leader:
+        - cultural conversion in localP after success action | ZB: [4, 8, 12]
+        - chance pct success all actions: [4, 7, 10]
+        - Z: [2, 4, 6]
+
+Generals:
+  Skills:
+    AB:
+      Bard:
+        - morale pct non-Barbarian states: [3, 6, 9]
+        - A: [1, 2, 3]
+        - gravitas per turn: [1, 2, 3]
+        - growth per turn localP: [0, 3, 6]
+      Raven:
+        - map move range: [5, 10, 15]
+        - reinforcement range: [5, 10, 15]
+        - A: [1, 2, 3]
+        - line of sight: [0, 10, 20]
+      Infantry Command:
+        - exp rank for infantry recruits: [2, 3, 4]
+        - A: [1, 2, 3]
+        - melee atk for infantry: [0, 6, 12]
+        - missile atk range for infantry: [0, 3, 6]
+        - ability: ['', 'Raise Banner', 'Rally and Inspire']
+      Wolf:
+        - A: [1, 2, 3]
+        - ambush success: [5, 10, 15]
+        - morale night battles: [5, 10, 15]
+        - melee atk all: [0, 5, 10]
+      Cavalry Command:
+        - exp cavalry recruits: [2, 3, 4]
+        - A: [1, 2, 3]
+        - charge cav: [0, 12, 24]
+        - ability: ['', '', 'Fast Charge']
+        - shots per minute for cav: [0, 6, 12]
+      Stag:
+        - cav charge: [3, 6, 9]
+        - move speed for all: [2, 4, 6]
+        - A: [1, 2, 3]
+        - manoeuvrability for all: [0, 4, 8]
+      Brute:
+        - dmg commander: [4, 6, 8]
+        - enemy morale: [-4, -6, -8]
+        - A: [1, 2, 3]
+        - melee atk commander's unit: [0, 4, 6]
+      Legend:
+        - A: [2, 3, 4]
+        - charge: [4, 8, 12]
+        - ability: ['', 'Force Concentration', 'Loyalty']
+        - morale commanders unit: [5, 10, 15]
+        - morale all: [0, 5, 10]
+
+      Naval Assault:
+        - admiral
+        - exp ranks assault ships: [2, 3, 4]
+        - melee atk assault ships: [0, 6, 12]
+        - melee def assault ships: [0, 6, 12]
+        - A: [1, 2, 3]
+    CB:
+      Strategist:
+        - gravitas: [1, 2, 3]
+        - C: [1, 2, 3]
+        - melee def skill pct: [0, 2, 4]
+        - ability: ['', 'Brace', 'Push']
+      Tactician:
+        - map move range: [8, 16, 24]
+        - C: [2, 3, 4]
+        - melee def: [0, 4, 8]
+        - ability: ['', '', 'Second Wind']
+      Logistics:
+        - repl: [4, 8, 12]
+        - C: [1, 2, 3]
+        - ammunition: [0, 10, 25]
+        - armor: [0, 8, 16]
+        - ability: ['', '', 'Battle Rhythm']
+      Scout:
+        - C: [1, 2, 3]
+        - line of sight: [5, 10, 15]
+        - chance of anticipating enemy ambush: [4, 8, 12]
+        - move speed light cav: [0, 5, 10]
+      Mercenary Contracts:
+        - mercenary cost: [-4, -8, -12]
+        - C: [1, 2, 3]
+        - upkeep mercenaries: [0, -6, -12]
+        - faction mercenary repl: [0, 15, 30]
+      Covert Action:
+        - C: [1, 2, 3]
+        - 'UNLOCK: Night battles land and sea'
+        - abmush launch: [0, 10, 20]
+        - ambush anticipate: [0, 10, 20]
+      Master Hunter:
+        - C: [1, 2, 3]
+        - morale night battles in forest: [5, 10, 15]
+        - morale ambush in forest: [4, 6, 8]
+        - archer move speed: [0, 5, 10]
+      Sleuth:
+        - C: [1, 2, 3]
+        - spy recr localP: [-5, -10, -20]
+        - chance ambush success localAs: [5, 10, 20]
+        - ability: ['', 'Taunt', 'Taunt group']
+        - hostile actions against general: [0, -10, -20]
+      Sentinel:
+        - C: [2, 3, 4]
+        - melee def: [5, 10, 15]
+        - ability: ['Second Wind', 'Unity', 'Stand & Fight']
+        - siege hold-out: [1, 2, 3]
+        - attrition loss under siege: [0, -25, -50]
+
+      Navigator:
+        - admiral
+        - C: [2, 3, 4]
+        - map move range: [8, 16, 24]
+        - melee def: [0, 4, 8]
+
+    ZB:
+      Warrior:
+        - Z: [1, 2, 3]
+        - gravitas: [1, 2, 3]
+        - melee atk: [0, 2, 4]
+        - shots per min: [0, 2, 4]
+        - ability: ['', '', 'WarCry']
+      Soldier:
+        - Z: [2, 3, 4]
+        - charge bonus: [10, 20, 30]
+        - melee atk: [0, 4, 8]
+        - shots per minute: [0, 4, 8]
+      Defence:
+        - Z: [1, 2, 3]
+        - morale while def battles: [10, 20, 30]
+        - melee def: [0, 6, 12]
+        - atk range missile: [0, 3, 6]
+      Offence:
+        - Z: [1, 2, 3]
+        - morale in offensive: [10, 20, 30]
+        - melee atk: [0, 6, 12]
+        - shots per minute: [0, 6, 12]
+        - ability: ['', "Into the Breach", "Into the Breach"]
+      Virtue:
+        - Z: [1, 2, 3]
+        - order localP: [2, 4, 6]
+        - resistance foreign occupation: [0, -20, -40]
+        - morale: [0, 6, 12]
+        - ability: ['', '', 'Presence']
+      Dread:
+        - Z: [1, 2, 3]
+        - enemy morale: [-10, -20, -30]
+        - weapon dmg all: [0, 6, 12]
+        - missile dmg for all: [0, 6, 12]
+        - ability: ["", 'Fear', 'Intimidate']
+      Despoil:
+        - Z: [1, 2, 3]
+        - loot income: [10, 20, 30]
+        - raid income: [0, 12, 24]
+        - number of captives: [0, 15, 30]
+        - ability: ['', '', 'Pride']
+      Fearless Warrior:
+        - Z: [2, 3, 4]
+        - melee atk infantry: [4, 8, 12]
+        - shots per minute: [4, 8, 12]
+        - morale in foreign territory: [0, 5, 10]
+        - ability: ['', '', 'Fighting Spirit']
+
+      Marine:
+        - admiral
+        - Z: [2, 3, 4]
+        - ramming bonus pct: [10, 20, 30]
+        - melee atk: [ 0, 2, 4 ]
+        - shots per min: [ 0, 2, 4 ]
+
+
+

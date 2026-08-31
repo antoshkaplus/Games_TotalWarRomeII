@@ -1,0 +1,15 @@
+order: 1, food: 7, wealth: 780.4, [['Tribal Oppidum', 'Raiders Port', 'Shrine of Zalmoxis', 'Mead Hall', 'Lynchet', 'Cattle Ranch'], ['Tribal Pagus', 'Shrine of Zalmoxis', 'Lynchet']]
+order: 1, food: 1, wealth: 831.4, [['Tribal Oppidum', 'Raiders Port', 'Shrine of Zalmoxis', 'Mead Hall', 'Lynchet', 'Cattle Ranch'], ['Tribal Pagus', 'Shrine of Zalmoxis', 'Cattle Ranch']]
+order: 1, food: 1, wealth: 831.4, [['Tribal Oppidum', 'Raiders Port', 'Shrine of Zalmoxis', 'Mead Hall', 'Lynchet', 'Cattle Ranch'], ['Tribal Pagus', 'Shrine of Zalmoxis', 'Cattle Ranch']]
+
+order: 5, food: 5, wealth: 780.4, [['Tribal Oppidum', 'Fishing Port', 'Shrine of Zalmoxis', 'Mead Hall', 'Coin Hoard', 'Lynchet'], ['Tribal Pagus', 'Shrine of Zalmoxis', 'Lynchet']]
+
+
+order: 4, food: 1, wealth: 1476.0, [
+    {"High King's Hold", 'Shrine of Zalmoxis', 'Tribal Oppidum', 'Lynchet', 'Cattle Ranch', 'Fishing Port'},
+    {'Shrine of Zalmoxis', 'Mead Hall', 'Tribal Pagus'},
+    {'Great Fair', 'Fishing Port', 'Tribal Pagus', 'Cattle Ranch'}]
+order: 8, food: 0, wealth: 1175.2, [
+    {"High King's Hold", 'Tribal Oppidum', 'Smokehouse', 'Mead Hall', 'Lynchet', 'Fishing Port'},
+    {"High King's Hold", 'Tribal Pagus', 'Lynchet'},
+    {'Great Fair', 'Shrine of Zalmoxis', 'Fishing Port', 'Tribal Pagus'}]

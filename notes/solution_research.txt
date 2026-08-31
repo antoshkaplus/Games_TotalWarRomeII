@@ -1,0 +1,105 @@
+Cpp LocalSearch:
+2 regions:3363 with all ports:3751.6
+
+Tribal Oppidum -> Hundred -> Fortified Settlement -> Settlement
+Tribal Pagus -> Town -> Village -> Farmstead
+Mead Hall -> Tavern -> Meeting Hall -> Warrior Lodge
+Lynchet -> Farm -> Field -> Enclosed Land
+High King's Hold -> Great Hall -> Warlord's Hold -> Chieftain's Hold -> Commons
+Cattle Ranch -> Cattle Farm -> Cattle Pens -> Enclosed Land
+Sluiced Mine -> Shaft Mine -> Trench Mine -> Pit Mine
+Cattle Ranch -> Cattle Farm -> Cattle Pens -> Enclosed Land
+
+Tribal Oppidum -> Hundred -> Fortified Settlement -> Settlement
+Tribal Pagus -> Town -> Village -> Farmstead
+Fishing Port -> Fishing Village -> Fishermen's Huts -> Port
+Fishing Port -> Fishing Village -> Fishermen's Huts -> Port
+Mead Hall -> Tavern -> Meeting Hall -> Warrior Lodge
+High King's Hold -> Great Hall -> Warlord's Hold -> Chieftain's Hold -> Commons
+Smokehouse -> Souterrain -> Storage Pit -> Commons
+Lynchet -> Farm -> Field -> Enclosed Land
+Sanctuary of Zalmoxis -> Shrine of Zalmoxis -> Grove of Zalmoxis -> Sacred Enclosure
+Coin Hoard -> Coin Mint -> Coin Maker -> Artisan's Lodging
+
+3 regions:4518 with all ports:5354.8
+
+Tribal Oppidum -> Hundred -> Fortified Settlement -> Settlement
+Tribal Pagus -> Town -> Village -> Farmstead
+Tribal Pagus -> Town -> Village -> Farmstead
+Smokehouse -> Souterrain -> Storage Pit -> Commons
+High King's Hold -> Great Hall -> Warlord's Hold -> Chieftain's Hold -> Commons
+Mead Hall -> Tavern -> Meeting Hall -> Warrior Lodge
+Cattle Ranch -> Cattle Farm -> Cattle Pens -> Enclosed Land
+Sanctuary of Zalmoxis -> Shrine of Zalmoxis -> Grove of Zalmoxis -> Sacred Enclosure
+Cattle Ranch -> Cattle Farm -> Cattle Pens -> Enclosed Land
+Lynchet -> Farm -> Field -> Enclosed Land
+Cattle Ranch -> Cattle Farm -> Cattle Pens -> Enclosed Land
+
+Tribal Oppidum -> Hundred -> Fortified Settlement -> Settlement
+Tribal Pagus -> Town -> Village -> Farmstead
+Tribal Pagus -> Town -> Village -> Farmstead
+Fishing Port -> Fishing Village -> Fishermen's Huts -> Port
+Fishing Port -> Fishing Village -> Fishermen's Huts -> Port
+Fishing Port -> Fishing Village -> Fishermen's Huts -> Port
+Sanctuary of Zalmoxis -> Shrine of Zalmoxis -> Grove of Zalmoxis -> Sacred Enclosure
+High King's Hold -> Great Hall -> Warlord's Hold -> Chieftain's Hold -> Commons
+Cattle Ranch -> Cattle Farm -> Cattle Pens -> Enclosed Land
+Mead Hall -> Tavern -> Meeting Hall -> Warrior Lodge
+Coin Hoard -> Coin Mint -> Coin Maker -> Artisan's Lodging
+Cattle Ranch -> Cattle Farm -> Cattle Pens -> Enclosed Land
+Cattle Ranch -> Cattle Farm -> Cattle Pens -> Enclosed Land
+Sanctuary of Zalmoxis -> Shrine of Zalmoxis -> Grove of Zalmoxis -> Sacred Enclosure
+
+4 regions:5871.2 with all ports:6993.6
+
+Tribal Oppidum -> Hundred -> Fortified Settlement -> Settlement
+Tribal Pagus -> Town -> Village -> Farmstead
+Tribal Pagus -> Town -> Village -> Farmstead
+Tribal Pagus -> Town -> Village -> Farmstead
+Mead Hall -> Tavern -> Meeting Hall -> Warrior Lodge
+Great Fair -> Public Market -> Farmers' Market -> Commons
+High King's Hold -> Great Hall -> Warlord's Hold -> Chieftain's Hold -> Commons
+Cattle Ranch -> Cattle Farm -> Cattle Pens -> Enclosed Land
+Cattle Ranch -> Cattle Farm -> Cattle Pens -> Enclosed Land
+Lynchet -> Farm -> Field -> Enclosed Land
+Cattle Ranch -> Cattle Farm -> Cattle Pens -> Enclosed Land
+Sanctuary of Zalmoxis -> Shrine of Zalmoxis -> Grove of Zalmoxis -> Sacred Enclosure
+Lynchet -> Farm -> Field -> Enclosed Land
+Cattle Ranch -> Cattle Farm -> Cattle Pens -> Enclosed Land
+
+Tribal Oppidum -> Hundred -> Fortified Settlement -> Settlement
+Tribal Pagus -> Town -> Village -> Farmstead
+Tribal Pagus -> Town -> Village -> Farmstead
+Tribal Pagus -> Town -> Village -> Farmstead
+Fishing Port -> Fishing Village -> Fishermen's Huts -> Port
+Fishing Port -> Fishing Village -> Fishermen's Huts -> Port
+Fishing Port -> Fishing Village -> Fishermen's Huts -> Port
+Fishing Port -> Fishing Village -> Fishermen's Huts -> Port
+Mead Hall -> Tavern -> Meeting Hall -> Warrior Lodge
+Sanctuary of Zalmoxis -> Shrine of Zalmoxis -> Grove of Zalmoxis -> Sacred Enclosure
+High King's Hold -> Great Hall -> Warlord's Hold -> Chieftain's Hold -> Commons
+Cattle Ranch -> Cattle Farm -> Cattle Pens -> Enclosed Land
+Cattle Ranch -> Cattle Farm -> Cattle Pens -> Enclosed Land
+Sanctuary of Zalmoxis -> Shrine of Zalmoxis -> Grove of Zalmoxis -> Sacred Enclosure
+Cattle Ranch -> Cattle Farm -> Cattle Pens -> Enclosed Land
+Sanctuary of Zalmoxis -> Shrine of Zalmoxis -> Grove of Zalmoxis -> Sacred Enclosure
+Cattle Ranch -> Cattle Farm -> Cattle Pens -> Enclosed Land
+Sanctuary of Zalmoxis -> Shrine of Zalmoxis -> Grove of Zalmoxis -> Sacred Enclosure
+
+
+Python:
+2 regions:3363.0 with all ports:3657.8
+{"High King's Hold", 'Tribal Oppidum', 'Lynchet', 'Mead Hall', 'Cattle Ranch'}, {'Cattle Ranch', 'Sluiced Mine', 'Tribal Pagus'}
+{'Fishing Port', 'Cattle Ranch', 'Tribal Oppidum', 'Lynchet', "High King's Hold", 'Mead Hall'}, {'Sanctuary of Zalmoxis', 'Raiders Port', 'Cattle Ranch', 'Tribal Pagus'}
+
+3 regions:4342.0, with all ports:5354.8,
+{'Smokehouse', 'Cattle Ranch', 'Mead Hall', 'Lynchet', 'Tribal Oppidum'}, {'Cattle Ranch', 'Carnyx Maker', 'Tribal Pagus'}, {'Cattle Ranch', 'Sanctuary of Zalmoxis', 'Tribal Pagus'}
+[{'Cattle Ranch', 'Tribal Oppidum', 'Coin Hoard', 'Fishing Port', 'Mead Hall', "High King's Hold"},
+{'Fishing Port', 'Cattle Ranch', 'Tribal Pagus', 'Sanctuary of Zalmoxis'},
+{'Fishing Port', 'Cattle Ranch', 'Tribal Pagus', 'Sanctuary of Zalmoxis'}]
+
+4 region:5621.4, with all ports:6993.6
+[{'Cattle Ranch', 'Tribal Oppidum', 'Lynchet', 'Smokehouse', "High King's Hold"}, {'Tribal Pagus', 'Lynchet', 'Coin Hoard'}, {'Tribal Pagus', 'Cattle Ranch', 'Sanctuary of Zalmoxis'}, {'Tribal Pagus', 'Cattle Ranch', 'Sanctuary of Zalmoxis'}]
+[{"High King's Hold", 'Tribal Oppidum', 'Sanctuary of Zalmoxis', 'Fishing Port', 'Cattle Ranch', 'Mead Hall'}, {'Tribal Pagus', 'Sanctuary of Zalmoxis', 'Fishing Port', 'Cattle Ranch'}, {'Tribal Pagus', 'Sanctuary of Zalmoxis', 'Fishing Port', 'Cattle Ranch'}, {'Tribal Pagus', 'Sanctuary of Zalmoxis', 'Fishing Port', 'Cattle Ranch'}]
+
+cpp need 1e+6 iterations to find certain solutions.

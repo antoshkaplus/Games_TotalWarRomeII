@@ -1,0 +1,118 @@
+- Province: Britannia
+  Region: Iska
+  Name: Stonehedge
+  Bonus:
+    civil_researh_pct: 10
+    order_penalties_foreign_pct: -20
+- Province: Celtica
+  Region: Namnetum
+  Name: The Dolmens of Karnag
+  Bonus:
+    military_research_pct: 10
+    growth: 4
+- Province: Baetica
+  Region: Gadira
+  Name: The Pillars of Hercules
+  Bonus:
+    fleet_move_pct: 5
+    fleet_recr_pct: -10
+- Province: Italia
+  Region: Neapolis
+  Name: Visuvius
+  Bonus:
+    morale_pct: 5
+    agri_wealth_pct: 5
+- Province: Magna Graecia
+  Region: Syracusae
+  Name: Etna
+  Bonus:
+    armor_pct: 5
+    agri_wealth_pct: 10
+- Province: Thracia
+  Region: Pulpudeva
+  Name: The Sanctuary of the Great Gods
+  Bonus:
+    growth: 4
+    culture: 4
+- Province: Macedonia
+  Region: Larissa
+  Name: Mount Olympus
+  Bonus:
+    order_penalties_foreign_pct: -20
+    bread_games_edict_cultural_buildings_wealth_pct: 25
+- Province: Hellas
+  Region: Sparta
+  Name: The Statue of Zeus at Olympia
+  Bonus:
+    culture_wealth_pct: 10
+    bread_games_edict_order: 10
+- Province: Asia
+  - Region: Rhodos
+    Name: The Colossus of Rhodes
+    Bonus:
+      tariff_income_trade_pct: 10
+      fleet_recr_slot: 1
+  - Region: Ephesus
+    Name: The Mausoleum at Halicarnassus
+    Bonus:
+      const_cost_pct: -10
+      tax_rate: 10
+- Province: Mesopotamia
+  Region: Seleucia
+  Name: The Great City of Babylon
+  Bonus:
+    civil_researh_pct: 10
+    growth: 5
+- Province: Persis
+  - Region: Persepolis
+    Name: The Necropolis of Rostam
+    Bonus:
+      morale_pct: 5
+      army_recr_cost_pct: -10
+  - Region: Susa
+    Name: Behistun
+    Bonus:
+      military_research_pct: 10
+      resist_foreign_culture: 20
+- Province: Parthia
+  Region: Zadrakarta
+  Name: Mount Damavand
+  Bonus:
+    order: 5
+    archers_missile_atk_range_pct: 10
+- Province: Carmania
+  Region: Bam
+  Name: The Bam Citadel
+  Bonus:
+    attrition_under_siege_pct: -10
+    siege_holdout_time: 2
+- Province: Aegyptus
+  - Region: Alexandria
+    Name: The Pharos of Alexandria
+    Bonus:
+      fleet_sight: 20
+      mari_com_wealth_pct: 15
+  - Region: Memphis
+    Name: The Necropolis of Giza
+    Bonus:
+      const_cost_pct: -5
+      culture_wealth_pct: 5
+- Province: Lybia
+  Region: Ammonium
+  Name: The Oracle of Amun-Re
+  Bonus:
+    order: 4
+    resist_foreign_culture: 20
+- Province: Dacia
+  Region: Zarmizegetusa
+  Name: Kogainon
+  Bonus:
+    army_morale_pct: 10
+    culture_wealth_pct: 5
+- Province: Mauretania
+  Region: Tingis
+  Name: The Pillars of Hercules
+  Bonus:
+    fleet_move_pct: 5
+    fleet_recr_pct: -10
+

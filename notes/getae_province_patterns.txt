@@ -1,0 +1,8 @@
+Military:
+[Mead Hall, Hall of Champions, Goldsmith]
+[Sanctuary of Pleistoros, Bronze Furnace, Horse Ranch, Builder's Hall]
+
+Research 2:
+[Bardic Circle, Sanctuary of Kotys, Cattle Ranch, Lynchet]
+[Sanctuary of Kotys, Lynchet]
+# can use Cattle Ranch instead of Lynchet for more profit
