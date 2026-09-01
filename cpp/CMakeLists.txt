@@ -19,3 +19,9 @@ target_link_libraries(solver_ex boost_program_options solver)
 
 add_executable(save_parser app/save_parser.cpp src/save_parser/esf_parser.cpp)
 target_link_libraries(save_parser boost_program_options jsoncpp lzma)
+
+add_executable(pack_parser app/pack_parser.cpp src/pack_parser/pack_parser.cpp)
+target_link_libraries(pack_parser boost_program_options jsoncpp lzma)
+
+add_executable(loc_parser app/loc_parser.cpp src/loc_parser/loc_parser.cpp)
+target_link_libraries(loc_parser boost_program_options jsoncpp lzma)
