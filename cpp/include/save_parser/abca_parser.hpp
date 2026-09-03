@@ -222,13 +222,18 @@ Json::Value parse_node(std::istream &in, const Params& params, const std::string
         auto arr = read_primitives_array<uint16_t>(in);
         res = primitives_array_to_json(arr);
     } else if (node_type.ASCII_ARRAY()) {
-        // Indices of strings.
-        auto sz = read_uintvar(in);
-        res = "STRING ARRAY";
-        // TODO: keep data
-        in.seekg(sz, std::ios_base::cur);
+        if (parent_node_name == "FACTION") {
+            res = Json::Value(Json::arrayValue);
+            auto idx_arr = read_primitives_array<uint32_t>(in);
+            for (auto idx : idx_arr) {
+                res.append( params.ansii_strings[idx] );
+            }
+        } else {
+            auto sz = read_uintvar(in);
+            res = "STRING ARRAY";
+            in.seekg(sz, std::ios_base::cur);
+        }
     } else if (node_type.UTF16_ARRAY()) {
-        // Indices of strings.
         auto sz = read_uintvar(in);
         res = "UTF16 ARRAY";
         // TODO: keep data
@@ -293,7 +298,7 @@ Json::Value parse_record(std::istream &in, const Params& params) {
     nodes_end += nodes_sz;
     Json::Value& nodes = res["Nodes"];
     for (auto i = 0; in.tellg() < nodes_end; ++i) {
-        nodes[i] = parse_node(in, params);
+        nodes[i] = parse_node(in, params, node_name);
     }
     if (in.tellg() != nodes_end) {
         throw std::runtime_error("something is wrong.");

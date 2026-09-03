@@ -123,11 +123,17 @@ void extract_factions(const std::filesystem::path& save_file_path, const Json::V
 
     auto factions = go_to(obj, path_items);
     if (factions != nullptr) {
+        auto factions_directory = save_file_path.parent_path();
+        factions_directory /= "factions";
+        std::filesystem::create_directories(factions_directory);
+
         for (auto& faction: (*factions)) {
-            auto faction_name = faction[0]["Nodes"][7].asString();
-            auto factions_file_path = save_file_path;
-            factions_file_path.replace_extension();
-            factions_file_path.replace_filename(factions_file_path.filename().string() + "-factions-" + faction_name);
+            auto faction_name = faction[0]["Nodes"][0].asString();
+
+            auto filename = save_file_path.filename();
+            filename.replace_extension();
+            filename = filename.string() + "-factions-" + faction_name + ".json";
+            auto factions_file_path = factions_directory / filename;
             factions_file_path.replace_extension("json");
             std::ofstream out(factions_file_path);
             Json::StyledStreamWriter().write(out, faction);
