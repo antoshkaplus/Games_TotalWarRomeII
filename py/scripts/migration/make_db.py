@@ -14,6 +14,15 @@ def init_db(db_path: str | pathlib.Path):
     db.make_tables()
 
 
+def region_json_generator(root_path: str):
+    regions_path = os.path.join(root_path, 'regions')
+    entries = os.listdir(regions_path)
+    for region_filename in entries:
+        with open(os.path.join(regions_path, region_filename)) as fp:
+            region_obj = json.load(fp)
+        yield region_obj
+
+
 def insert_factions(args):
     root_path = os.path.dirname(args.save_path)
     init_db(pathlib.Path(args.save_path).with_suffix('.db'))
@@ -60,11 +69,7 @@ def insert_regions(args):
                       for region_code_name in province['region_ids']}
 
     region_list = []
-    regions_path = os.path.join(root_path, 'regions')
-    entries = os.listdir(regions_path)
-    for region_filename in entries:
-        with open(os.path.join(regions_path, region_filename)) as fp:
-            region_obj = json.load(fp)
+    for region_obj in region_json_generator(root_path):
         region_obj = region_obj[0]['Nodes']
         region_id = region_obj[0]
         region_code_name = region_obj[1]
@@ -84,12 +89,7 @@ def insert_province_religions(args):
 
     # Non province capital regions have garbage values.
     region_religions = {}
-    regions_path = os.path.join(root_path, 'regions')
-    entries = os.listdir(regions_path)
-    for region_filename in entries:
-        with open(os.path.join(regions_path, region_filename)) as fp:
-            region_obj = json.load(fp)
-
+    for region_obj in region_json_generator(root_path):
         region_code_name = json_util.go_to(region_obj, '[]/REGION') [1]
         religions = json_util.go_to(region_obj, '[]/REGION/[]/POPULATION/[]/REGION_FACTORS/[]/RELIGION_BREAKDOWN')
 
@@ -109,6 +109,36 @@ def insert_province_religions(args):
                     db.ProvinceReligion(province=pr, religion_code_name=religion_code_name, ratio=ratio))
 
     db.ProvinceReligion.bulk_create(province_religion_list)
+
+
+def insert_building_slots(args):
+    root_path = os.path.dirname(args.save_path)
+    init_db(pathlib.Path(args.save_path).with_suffix('.db'))
+
+    db_regions = {rg.code_name: rg for rg in db.Region.select()}
+
+    region_building_slot_list = []
+    for region_obj in region_json_generator(root_path):
+        region_code_name = json_util.go_to(region_obj, '[]/REGION') [1]
+        region_slot = json_util.go_to(region_obj, '[]/REGION/[]/REGION_SLOT_MANAGER/[]/REGION_SLOT_ARRAY/[]/[]/REGION_SLOT')
+
+        for rs in region_slot:
+            building = json_util.go_to(rs, '[]/BUILDING_MANAGER/[]/BUILDING')
+            building_code_name = None
+            faction_code_name = None
+            if building:
+                building_code_name = building[3]
+                faction_code_name = building[4]
+
+            region_building_slot_list.append(db.RegionBuildingSlot(
+                region=db_regions[region_code_name],
+                building_code_name=building_code_name,
+                faction_code_name=faction_code_name,
+                slot_idx=int(rs[3].split(':')[-1]),
+                slot_type=rs[4]
+            ))
+
+    db.RegionBuildingSlot.bulk_create(region_building_slot_list)
 
 
 def insert_all(args):
@@ -134,6 +164,9 @@ p = add_parser(sps, 'insert-regions', func=insert_regions)
 p.add_argument('save_path', type=str)
 
 p = add_parser(sps, 'insert-religions', func=insert_province_religions)
+p.add_argument('save_path', type=str)
+
+p = add_parser(sps, 'insert-building-slots', func=insert_building_slots)
 p.add_argument('save_path', type=str)
 
 p = add_parser(sps, 'insert-all', func=insert_all)
