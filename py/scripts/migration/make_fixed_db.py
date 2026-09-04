@@ -39,4 +39,35 @@ def insert_building_upgrades():
     db.BuildingUpgrade.bulk_create(building_upgrades_list)
 
 
-insert_building_upgrades()
+def insert_factions():
+    path = os.path.join(root_path, 'fixed/factions.tsv')
+    df = pd.read_csv(path, sep='\t', comment='#')
+
+    faction_list = []
+    for _, row in df.iterrows():
+        ff = db.Faction(code_name=row['key'],
+                        culture=row['diplomacy_culture'],
+                        subculture=row['subculture'],
+                        screen_name=row['screen_name'])
+        faction_list.append(ff)
+
+    db.Faction.bulk_create(faction_list)
+
+
+def insert_building_cultures():
+    path = os.path.join(root_path, 'fixed/building_culture_variants.tsv')
+    df = pd.read_csv(path, sep='\t', comment='#')
+
+    building_culture_list = []
+    for _, row in df.iterrows():
+        ff = db.BuildingCulture(building_code_name=row['building'],
+                                culture=row['culture'],
+                                subculture=row['subculture'],
+                                faction=row['faction'],
+                                short_description=row['short_description'])
+        building_culture_list.append(ff)
+
+    db.BuildingCulture.bulk_create(building_culture_list)
+
+
+insert_building_cultures()
