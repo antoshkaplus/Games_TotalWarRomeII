@@ -222,7 +222,7 @@ Json::Value parse_node(std::istream &in, const Params& params, const std::string
         auto arr = read_primitives_array<uint16_t>(in);
         res = primitives_array_to_json(arr);
     } else if (node_type.ASCII_ARRAY()) {
-        if (parent_node_name == "FACTION") {
+        if (parent_node_name == "FACTION" || parent_node_name == "REGION") {
             res = Json::Value(Json::arrayValue);
             auto idx_arr = read_primitives_array<uint32_t>(in);
             for (auto idx : idx_arr) {
