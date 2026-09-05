@@ -4,7 +4,6 @@ import argparse
 import pathlib
 from antoshka.view.cli import add_parser
 from antoshka.totalwar.romeii.model import db, Faction
-from antoshka.totalwar.romeii.model.db import Region
 from antoshka.totalwar.romeii import json_util
 
 
@@ -70,16 +69,19 @@ def insert_regions(args):
 
     region_list = []
     for region_obj in region_json_generator(root_path):
+        # Go inside REGION node.
         region_obj = region_obj[0]['Nodes']
         region_id = region_obj[0]
         region_code_name = region_obj[1]
         region_owner_id = region_obj[14]
+        settlement_code_name = json_util.go_to(region_obj, '[]/CAMPAIGN_LOCALISATION')[0]
 
-        region_list.append(Region(id=region_id,
-                                  code_name=region_code_name,
-                                  province=db.Province(code_name=region_province[region_code_name]),
-                                  province_capital=region_capital[region_code_name],
-                                  owner=db.Faction(id=region_owner_id)))
+        region_list.append(db.Region(id=region_id,
+                                     code_name=region_code_name,
+                                     province=db.Province(code_name=region_province[region_code_name]),
+                                     province_capital=region_capital[region_code_name],
+                                     owner=db.Faction(id=region_owner_id),
+                                     settlement_code_name=settlement_code_name))
     db.Region.bulk_create(region_list)
 
 
