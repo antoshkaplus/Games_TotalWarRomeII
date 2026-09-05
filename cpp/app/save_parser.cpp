@@ -2,6 +2,7 @@
 #include <iostream>
 #include <filesystem>
 #include <span>
+#include <format>
 #include <boost/program_options.hpp>
 #include <ant/core/core.hpp>
 #include "save_parser/parser.hpp"
@@ -58,7 +59,7 @@ void extract_regions(const std::filesystem::path& save_file_path, const Json::Va
             }
             auto regions_filename = save_file_path.filename();
             regions_filename.replace_extension();
-            regions_filename += "-regions-" + region_name;
+            regions_filename += std::format("-regions-{}.json", region_name);
             regions_filename = regions_directory_path / regions_filename;
             std::ofstream out(regions_filename);
             Json::StyledStreamWriter().write(out, region);
