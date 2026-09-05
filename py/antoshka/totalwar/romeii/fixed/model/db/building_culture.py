@@ -4,7 +4,8 @@ from .base import BaseModel
 
 class BuildingCulture(BaseModel):
     building_code_name = peewee.CharField()
-    culture = peewee.CharField()
+    # In most cases culture should be present.
+    culture = peewee.CharField(null=True)
     subculture = peewee.CharField(null=True)
     faction = peewee.CharField(null=True)
     short_description = peewee.CharField()

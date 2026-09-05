@@ -1,5 +1,6 @@
 import os
 import pandas as pd
+import numpy as np
 from antoshka.totalwar.romeii.fixed.model import db
 
 
@@ -57,6 +58,7 @@ def insert_factions():
 def insert_building_cultures():
     path = os.path.join(root_path, 'fixed/building_culture_variants.tsv')
     df = pd.read_csv(path, sep='\t', comment='#')
+    df = df.replace({np.nan: None})
 
     building_culture_list = []
     for _, row in df.iterrows():
@@ -70,4 +72,32 @@ def insert_building_cultures():
     db.BuildingCulture.bulk_create(building_culture_list)
 
 
-insert_building_cultures()
+def insert_building_culture_screen():
+    path = os.path.join(root_path, 'fixed/building_culture_variants.loc.tsv')
+    building_name_df = pd.read_csv(path, sep='\t', comment='#')
+    building_name_df['key'] = building_name_df['key'].astype(str).str.removeprefix('building_culture_variants_name_')
+    building_name_dict = {row['key']: row['text'] for _, row in building_name_df.iterrows()}
+
+    path = os.path.join(root_path, 'fixed/building_short_description_texts.loc.tsv')
+    description_df = pd.read_csv(path, sep='\t', comment='#')
+    description_df['key'] = description_df['key'].astype(str).str.removeprefix('building_short_description_texts_short_description_')
+    description_dict = {row['key']: row['text'] for _, row in description_df.iterrows()}
+
+    with db.DB.atomic():
+        item_list = []
+
+        for bc in db.BuildingCulture.select():
+            building_name_key = bc.building_code_name
+            if bc.culture: building_name_key += bc.culture
+            if bc.subculture: building_name_key += bc.subculture
+            if bc.faction: building_name_key += bc.faction
+
+            item = db.BuildingCultureScreen(
+                building_culture=bc,
+                building_name=building_name_dict[building_name_key],
+                short_description=description_dict[bc.short_description])
+            item_list.append(item)
+        db.BuildingCultureScreen.bulk_create(item_list)
+
+
+insert_building_culture_screen()
