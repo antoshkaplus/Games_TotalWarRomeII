@@ -47,16 +47,20 @@ void extract_regions(const std::filesystem::path& save_file_path, const Json::Va
 
     auto regions = go_to(obj, path_items);
     if (regions != nullptr) {
+        auto regions_directory_path = save_file_path.parent_path();
+        regions_directory_path /= "regions";
+        std::filesystem::create_directory(regions_directory_path);
+
         for (auto& region: (*regions)) {
             auto region_name = region[0]["Nodes"][1].asString();
             if (region_name.size() > 100) {
                 throw std::runtime_error("something is wrong");
             }
-            auto regions_file_path = save_file_path;
-            regions_file_path.replace_extension();
-            regions_file_path.replace_filename(regions_file_path.filename().string() + "-regions-" + region_name);
-            regions_file_path.replace_extension("json");
-            std::ofstream out(regions_file_path);
+            auto regions_filename = save_file_path.filename();
+            regions_filename.replace_extension();
+            regions_filename += "-regions-" + region_name;
+            regions_filename = regions_directory_path / regions_filename;
+            std::ofstream out(regions_filename);
             Json::StyledStreamWriter().write(out, region);
         }
     }
