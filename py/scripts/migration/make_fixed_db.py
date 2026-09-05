@@ -100,4 +100,31 @@ def insert_building_culture_screen():
         db.BuildingCultureScreen.bulk_create(item_list)
 
 
-insert_building_culture_screen()
+def insert_province_screen():
+    path = os.path.join(root_path, 'fixed/provinces.loc.tsv')
+    df = pd.read_csv(path, sep='\t', comment='#')
+    df['key'] = df['key'].str.removeprefix('provinces_onscreen_')
+
+    item_list = []
+    for _, row in df.iterrows():
+        ff = db.ProvinceScreen(province_code_name=row['key'],
+                               province_name=row['text'])
+        item_list.append(ff)
+    db.ProvinceScreen.bulk_create(item_list)
+
+
+def insert_region_screen():
+    path = os.path.join(root_path, 'fixed/regions.loc.tsv')
+    df = pd.read_csv(path, sep='\t', comment='#')
+    df = df[df['key'].str.startswith('regions_onscreen_')]
+    df['key'] = df['key'].str.removeprefix('regions_onscreen_')
+
+    item_list = []
+    for _, row in df.iterrows():
+        ff = db.RegionScreen(region_code_name=row['key'],
+                             settlement_name=row['text'])
+        item_list.append(ff)
+    db.RegionScreen.bulk_create(item_list)
+
+
+insert_region_screen()
