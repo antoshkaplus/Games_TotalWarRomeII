@@ -10,4 +10,3 @@ class Region(BaseModel):
     province = peewee.ForeignKeyField(Province, backref='regions')
     province_capital = peewee.BooleanField(default=False)
     owner = peewee.ForeignKeyField(Faction, backref='regions')
-    settlement_code_name = peewee.CharField()
