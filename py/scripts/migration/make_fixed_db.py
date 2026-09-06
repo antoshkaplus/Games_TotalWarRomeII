@@ -127,4 +127,29 @@ def insert_region_screen():
     db.RegionScreen.bulk_create(item_list)
 
 
-insert_region_screen()
+def insert_buildings():
+    path = os.path.join(root_path, 'fixed/building_levels.tsv')
+    df_levels = pd.read_csv(path, sep='\t', comment='#')
+    df_levels = df_levels[['level_name', 'chain', 'level', 'create_time', 'create_cost', 'resource_requirement']]
+
+    path = os.path.join(root_path, 'fixed/building_chains.tsv')
+    df_chains = pd.read_csv(path, sep='\t', comment='#')
+    df_chains = df_chains[['key', 'building_superchain']]
+
+    df = pd.merge(df_levels, df_chains,  how='left', left_on='chain', right_on='key')
+    df = df.replace({np.nan: None})
+
+    item_list = []
+    for _, row in df.iterrows():
+        ff = db.Building(code_name=row['level_name'],
+                         chain=row['chain'],
+                         superchain=row['building_superchain'],
+                         level=row['level'],
+                         create_turns=row['create_time'],
+                         create_cost=row['create_cost'],
+                         resource_requirement=row['resource_requirement'])
+        item_list.append(ff)
+    db.Building.bulk_create(item_list)
+
+
+insert_buildings()
