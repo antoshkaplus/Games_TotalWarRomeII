@@ -1,3 +1,4 @@
+from __future__ import annotations
 from enum import StrEnum, auto
 
 
@@ -41,7 +42,7 @@ class BuildingSuperchain(StrEnum):
                         BuildingSuperchain.Mine, BuildingSuperchain.SanitationBarb, BuildingSuperchain.Temple]
 
     @staticmethod
-    def parse(superchain: str):
+    def parse(superchain: str) -> BuildingSuperchain:
         if superchain.startswith('Resource'):
             return BuildingSuperchain.Resource
         return BuildingSuperchain(superchain)
