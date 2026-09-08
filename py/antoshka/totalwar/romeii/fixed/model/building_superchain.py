@@ -39,3 +39,9 @@ class BuildingSuperchain(StrEnum):
     def minor_secondary(self) -> bool:
         return self in [BuildingSuperchain.Agriculture, BuildingSuperchain.MilitaryMain, BuildingSuperchain.MilitarySecondary,
                         BuildingSuperchain.Mine, BuildingSuperchain.SanitationBarb, BuildingSuperchain.Temple]
+
+    @staticmethod
+    def parse(superchain: str):
+        if superchain.startswith('Resource'):
+            return BuildingSuperchain.Resource
+        return BuildingSuperchain(superchain)
