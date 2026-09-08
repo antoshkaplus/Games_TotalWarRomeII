@@ -1,0 +1,58 @@
+
+province_stats = {
+    ('rom_building_gdp_agriculture_animal_husbandry', 'this_building'): 'wealth_livestock',
+    ('rom_building_gdp_agriculture_farming', 'this_building'): 'wealth_farming',
+    ('rom_building_gdp_culture_entertainment', 'this_building'): 'wealth_fun',
+    ('rom_building_gdp_culture_learning', 'this_building'): 'wealth_learning',
+    ('rom_building_gdp_industry_manufacture', 'this_building'): 'wealth_mnfr',
+    ('rom_building_gdp_industry_mining', 'this_building') : 'wealth_mining',
+    ('rom_building_gdp_subsistence', 'this_building'): 'wealth_subsistence',
+    ('rom_building_gdp_trade_local', 'this_building'): 'wealth_local_com',
+    ('rom_building_gdp_trade_sea', 'this_building'): 'wealth_mari_com',
+
+    ('rom_building_gdp_mod_all', 'regions_in_this_province'): 'wealth_pct_all',
+    ('rom_building_gdp_mod_agriculture_all', 'regions_in_this_province'): 'wealth_pct_agri',
+    ('rom_building_gdp_mod_agriculture_farming', 'regions_in_this_province'): 'wealth_pct_farming',
+    ('rom_building_gdp_mod_industry', 'regions_in_this_province'): 'wealth_pct_industry',
+    ('rom_building_gdp_mod_industry_mining', 'regions_in_this_province'): 'wealth_pct_mining',
+    ('rom_building_gdp_mod_culture_entertainment', 'regions_in_this_province'): 'wealth_pct_fun',
+    ('rom_building_gdp_mod_culture_all', 'regions_in_this_province'): 'wealth_pct_culture',
+    ('rom_building_gdp_mod_trade_all', 'regions_in_this_province'): 'wealth_pct_com',
+
+    ('rom_building_public_order_attitude_squalor', 'this_province'): 'order',
+    ('rom_building_public_order_happiness', 'this_province'): 'order',
+    ('rom_building_public_order_happiness_sanitation', 'this_province'): 'order',
+
+    # Grain resource provides food per adjacent region + per region in province
+    # hard to account for it. Can hardcode this or just remember about it.
+    ('rom_building_food_farming_grain', 'this_region'): 'food',
+    ('rom_building_food_consumption', 'this_region'): 'food',
+    ('rom_building_food_reserves', 'this_region'): 'food',
+    ('rom_building_food_trade', 'this_region'): 'food',
+    ('rom_building_food_fishing', 'this_region'): 'food',
+
+    ('rom_building_growth_all', 'this_province'): 'growth',
+
+    ('rom_building_culture_conversion_balkan', 'this_region'): 'culture',
+}
+
+# edict
+# barb_religious_dacian_gebelizis_2 name:Grove of Gebeleizis
+# rom_province_initiative_barbarian_tribute_mod_public_order this_province
+
+# edict
+# barb_religious_dacian_kotys_3 name:Shrine of Kotys
+# rom_province_initiative_festival_mod_gdp_agriculture_mod
+
+faction_stats = {
+    ('rom_building_gdp_mod_agriculture_all', 'in_all_your_regions'): 'wealth_pct_agri',
+    ('rom_building_gdp_mod_industry_mining', 'in_all_your_regions'): 'wealth_pct_mining',
+    ('rom_building_gdp_mod_industry_manufacturing', 'in_all_your_regions'): 'wealth_pct_mnfr',
+    ('rom_building_gdp_mod_trade_all', 'in_all_your_regions'): 'wealth_pct_com',
+
+    ('rom_building_public_order_happiness_sanitation', 'in_all_your_provinces'): 'order',
+    ('rom_building_public_order_happiness', 'in_all_your_provinces'): 'order',
+
+    ('rom_building_trade_tariffs_all', 'this_faction'): 'tariff_trade_agree_pct',
+    ('rom_building_research_points', 'this_faction'): 'research_pct',
+}

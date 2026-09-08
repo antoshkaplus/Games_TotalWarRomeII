@@ -1,11 +1,7 @@
 import copy
 import itertools
 import typing
-import enum
-
-from util import filter_tree, leaf_names
 from solution import Solution
-from stats import Stats
 from buildings_tree import BuildingsTree
 
 
@@ -18,7 +14,6 @@ class WorkflowItem:
 class Solver:
     def __init__(self, buildings_tree : BuildingsTree):
         self.buildings_tree = buildings_tree
-
 
     def solve(self,
               regions_count     : int,

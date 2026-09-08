@@ -1,6 +1,7 @@
 import yaml
-import typing
+import typing as ty
 import traceback
+from .building import Building, Name
 
 
 def read_yaml(path):
@@ -8,7 +9,7 @@ def read_yaml(path):
         return yaml.full_load(fp)
 
 
-def filter_tree(root_name, tree):
+def filter_tree(root_name: Name, tree: ty.Dict[Name, Building]) -> ty.Dict[Name, Building]:
     tree = dict(tree)
     filtered = {root_name: tree[root_name]}
     del tree[root_name]
@@ -18,7 +19,7 @@ def filter_tree(root_name, tree):
 
         for item_name, item in list(tree.items()):
             try:
-                if item['parent'] in filtered:
+                if item.parent_name in filtered:
                     filtered[item_name] = item
                     del tree[item_name]
             except:
@@ -29,7 +30,7 @@ def filter_tree(root_name, tree):
     return filtered, tree
 
 
-def filter_tree_many(root_names, tree, depth=None):
+def filter_tree_many(root_names: ty.Iterable[Name], tree: ty.Dict[Name, Building], depth=None):
     tree = dict(tree)
     filtered = dict((root_name, tree[root_name]) for root_name in root_names)
     for root_name in root_names:
@@ -41,7 +42,7 @@ def filter_tree_many(root_names, tree, depth=None):
         new_filtered = {}
         for item_name, item in list(tree.items()):
             try:
-                if item['parent'] in filtered:
+                if item.parent_name in filtered:
                     new_filtered[item_name] = item
                     del tree[item_name]
             except:
@@ -54,8 +55,8 @@ def filter_tree_many(root_names, tree, depth=None):
     return filtered, tree
 
 
-def leaf_names(tree) -> typing.List[str]:
+def leaf_names(tree) -> ty.List[str]:
     parents = set()
     for k, v in tree.items():
-        parents.add(v['parent'])
+        parents.add(v.parent_name)
     return [k for k in tree.keys() if k not in parents]

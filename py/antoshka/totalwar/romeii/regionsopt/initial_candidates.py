@@ -1,6 +1,5 @@
 import copy
 import typing
-
 from solution import Solution
 from buildings_tree import BuildingsTree
 

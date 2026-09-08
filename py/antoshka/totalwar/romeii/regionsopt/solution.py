@@ -1,6 +1,6 @@
 import traceback
-
 from stats import Stats
+
 
 class Solution:
     def __init__(self, regions_count):
