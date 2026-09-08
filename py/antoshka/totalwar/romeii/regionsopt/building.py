@@ -6,26 +6,6 @@ type Name = str
 
 
 class Building(Protocol):
-    # Primary building is a head building of region.
-    @property
-    def primary(self) -> bool:
-        # False - `secondary` or `secondary_port`
-        pass
-
-    @property
-    def secondary_port(self) -> bool:
-        pass
-
-    # Both major and minor properties are required,
-    # since one building could be placed in either slot.
-    @property
-    def major(self) -> bool:
-        pass
-
-    @property
-    def minor(self) -> bool:
-        pass
-
     @property
     def name(self) -> Name:
         pass
@@ -36,4 +16,28 @@ class Building(Protocol):
 
     @property
     def need_resource(self) -> ty.Optional[str]:
+        pass
+
+    @property
+    def stats(self) -> ty.Dict[str, int|float]:
+        pass
+
+    @property
+    def port(self) -> bool:
+        pass
+
+    @property
+    def major_primary(self) -> bool:
+        pass
+
+    @property
+    def minor_primary(self) -> bool:
+        pass
+
+    @property
+    def major_secondary(self) -> bool:
+        pass
+
+    @property
+    def minor_secondary(self) -> bool:
         pass

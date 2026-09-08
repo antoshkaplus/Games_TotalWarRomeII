@@ -27,34 +27,24 @@ class BuildingsTree:
 
         self.buildings_stats = {}
         for k, v in self._buildings_dict.items():
-            v.name = k
-            self.buildings_stats[k] = Stats(v)
-
-        resource, other = {}, {}
-        for k, v in self._buildings_dict.items():
-            if v.get('resource', False):
-                resource[k] = v
-            else:
-                other[k] = v
-        self.resource_leafs_names = set(leaf_names(resource))
-
+            self.buildings_stats[k] = Stats(v.stats)
 
         major_prime, minor_prime = {}, {}
         major_other, minor_other = {}, {}
         port = {}
         for name, building in self._buildings_dict.items():
-            if building.primary:
-                if building.major:
-                    major_prime[name] = building
-                else:
-                    minor_prime[name] = building
-            elif building.secondary_port:
+            if building.major_primary:
+                major_prime[name] = building
+            if building.minor_primary:
+                minor_prime[name] = building
+
+            if building.major_secondary:
+                major_other[name] = building
+            if building.minor_secondary:
+                minor_other[name] = building
+
+            if building.port:
                 port[name] = building
-            else: # secondary
-                if building.major:
-                    major_other[name] = building
-                if building.minor:
-                    minor_other[name] = building
 
         self.major_leafs_names = set(leaf_names(major_prime))
         self.minor_leafs_names = set(leaf_names(minor_prime))
