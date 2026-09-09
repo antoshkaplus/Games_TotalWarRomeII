@@ -1,7 +1,7 @@
 import copy
 import typing
-from solution import Solution
-from buildings_tree import BuildingsTree
+from .solution import Solution
+from .buildings_tree import BuildingsTree
 
 
 def initial_candidates(regions_lists : typing.List[typing.List[str]], bt : BuildingsTree):

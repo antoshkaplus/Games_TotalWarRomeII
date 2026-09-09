@@ -13,6 +13,7 @@ class BuildingSuperchain(StrEnum):
     Port = auto() # special
 
     ResourceAmber = auto() # minor primary
+    ResourceDye = auto()
     ResourceGlass = auto()
     ResourceGold = auto()
     ResourceGrain = auto()
@@ -23,7 +24,10 @@ class BuildingSuperchain(StrEnum):
     ResourceLumber = auto()
     ResourceMarble = auto()
     ResourceOlive = auto()
-    ResourceDye = auto()
+    ResourceSalt  = auto()
+    ResourceSilk = auto()
+    ResourceSpice = auto()
+    ResourceWine = auto()
 
     SanitationBarb = auto() # minor
     SettlementMajor = auto() # major primary

@@ -1,8 +1,8 @@
 import copy
 import itertools
 import typing
-from solution import Solution
-from buildings_tree import BuildingsTree
+from .solution import Solution
+from .buildings_tree import BuildingsTree
 
 
 class WorkflowItem:
@@ -53,7 +53,7 @@ class Solver:
         minors_indices = []
         c = self.candidates[0]
         for i in range(1, self.regions_count):
-            if not (c.regions[i] & self.buildings_tree.minor_leafs_names):
+            if not ((c.regions[i] & self.buildings_tree.minor_leafs_names) or (c.regions[i] & self.buildings_tree.resource_leafs_names)):
                 minors_indices.append(i)
 
         new_candidates = []

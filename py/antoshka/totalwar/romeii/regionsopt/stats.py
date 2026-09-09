@@ -1,5 +1,5 @@
+from .faction_stats import faction_stats
 
-from faction_stats import faction_stats
 
 STATS_NAMES_LIST = ['wealth_pct_all', 'wealth_pct_industry', 'wealth_pct_mnfr', 'wealth_pct_mining', 'wealth_pct_agri', 'wealth_pct_farming', 'wealth_pct_com',
                     'wealth_pct_culture', 'wealth_pct_fun',

@@ -23,7 +23,11 @@ class Building(Protocol):
         pass
 
     @property
-    def port(self) -> bool:
+    def port_kind(self) -> bool:
+        pass
+
+    @property
+    def resource_kind(self) -> bool:
         pass
 
     @property

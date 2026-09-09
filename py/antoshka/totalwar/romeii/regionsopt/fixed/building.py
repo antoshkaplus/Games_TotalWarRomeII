@@ -30,8 +30,12 @@ class Building(BuildingProtocol):
         return self._stats
 
     @property
-    def port(self) -> bool:
-        return self.superchain.port
+    def port_kind(self) -> bool:
+        return self.superchain.port_kind
+
+    @property
+    def resource_kind(self) -> bool:
+        return self.superchain.resource_kind
 
     @property
     def major_primary(self) -> bool:

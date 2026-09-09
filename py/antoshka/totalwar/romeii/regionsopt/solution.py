@@ -1,5 +1,5 @@
 import traceback
-from stats import Stats
+from .stats import Stats
 
 
 class Solution:

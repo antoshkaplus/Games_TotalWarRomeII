@@ -1,18 +1,21 @@
 import copy
-
-from util import read_yaml, filter_tree
-from solver import Solver, WorkflowItem
-from solution import Solution
-from buildings_tree import BuildingsTree
-from initial_candidates import initial_candidates
-
 import argparse
+from antoshka.totalwar.romeii.fixed.model.db import DB
+from antoshka.totalwar.romeii.regionsopt.solver import Solver, WorkflowItem
+from antoshka.totalwar.romeii.regionsopt.solution import Solution
+from antoshka.totalwar.romeii.regionsopt.buildings_tree import BuildingsTree
+from antoshka.totalwar.romeii.regionsopt.initial_candidates import initial_candidates
+from antoshka.totalwar.romeii.regionsopt.fixed.building_api import list_buildings
 
 
-def use_solver(regions, port_regions, min_food, min_order, no_resources=False, no_major=False, prune_sz=2000, research=False, depth=None):
 
-    path = "buildings/getae.yaml"
-    buildings = read_yaml(path)
+def use_solver(regions, port_regions, min_food, min_order,
+               no_resources=False, no_major=False, prune_sz=2000, research=False, depth=None):
+    fixed_db_path =  '/home/antoshkaplus/Documents/Games_TotalWarRomeII/data_lfs/fixed.db'
+    DB.init(fixed_db_path)
+    with DB:
+        buildings = list_buildings('rom_getae')
+    buildings = {bb.name: bb for bb in buildings}
 
     bt = BuildingsTree(buildings, no_resources, depth)
     solver = Solver(bt)
@@ -35,14 +38,21 @@ def use_solver(regions, port_regions, min_food, min_order, no_resources=False, n
     prune_heuristic = lambda s: (-min(s.stats.food-min_food, 0) + -min(s.stats.order-min_order, 0), -s.stats.wealth)
 
     candidates = initial_candidates(regions, bt)
-    for c in candidates:
-        if research:
-            c.add(0, 'Bardic Circle', bt.buildings_stats['Bardic Circle'])
+    # for c in candidates:
+    #     if research:
+    #         c.add(0, 'Bardic Circle', bt.buildings_stats['Bardic Circle'])
 
     solver.solve(len(regions), port_regions, candidates, workflow, prune_heuristic)
     candidates = solver.candidates
     candidates = list(filter(lambda x: x.stats.food >= min_food and x.stats.order >= min_order, candidates))
     print(len(candidates), None if not candidates else candidates[0])
+
+    if candidates:
+        solution = candidates[0]
+        for region in solution.regions:
+            for building_name in region:
+                print(building_name, buildings[building_name].stats)
+
 
 
 parser = argparse.ArgumentParser()

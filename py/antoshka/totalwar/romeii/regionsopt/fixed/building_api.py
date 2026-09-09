@@ -3,7 +3,7 @@ from collections import defaultdict
 from antoshka.totalwar.romeii.fixed.db.faction_buildings import list_faction_buildings
 from antoshka.totalwar.romeii.fixed.model import db
 from antoshka.totalwar.romeii.fixed.model.building_superchain import BuildingSuperchain
-import effect_map
+from . import effect_map
 from .building import Building
 
 
@@ -18,6 +18,11 @@ def list_buildings(faction_code_name: str) -> ty.List[Building]:
         if pair in effect_map.province_stats:
             my_effect_name = effect_map.province_stats[pair]
             building_effects[item.code_name][my_effect_name] = item.value
+
+        if pair in effect_map.province_negate_stats:
+            my_effect_name = effect_map.province_negate_stats[pair]
+            building_effects[item.code_name][my_effect_name] = -item.value
+
         if pair in effect_map.faction_stats:
             my_effect_name = effect_map.faction_stats[pair]
             building_effects[item.code_name][my_effect_name] = item.value

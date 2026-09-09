@@ -1,8 +1,8 @@
 import typing as ty
 import copy
 import collections
-from util import leaf_names, filter_tree, filter_tree_many
-from stats import Stats
+from .util import leaf_names, filter_tree_many
+from .stats import Stats
 from .building import Building, Name
 
 
@@ -32,22 +32,27 @@ class BuildingsTree:
         major_prime, minor_prime = {}, {}
         major_other, minor_other = {}, {}
         port = {}
+        resource = {}
         for name, building in self._buildings_dict.items():
             if building.major_primary:
                 major_prime[name] = building
             if building.minor_primary:
-                minor_prime[name] = building
+                if building.resource_kind:
+                    resource[name] = building
+                else:
+                    minor_prime[name] = building
 
             if building.major_secondary:
                 major_other[name] = building
             if building.minor_secondary:
                 minor_other[name] = building
 
-            if building.port:
+            if building.port_kind:
                 port[name] = building
 
         self.major_leafs_names = set(leaf_names(major_prime))
         self.minor_leafs_names = set(leaf_names(minor_prime))
+        self.resource_leafs_names = set(leaf_names(resource))
         self.port_leafs_names = set(leaf_names(port))
         self.other_major_leafs_names = set(leaf_names(major_other))
         self.other_minor_leafs_names = set(leaf_names(minor_other))

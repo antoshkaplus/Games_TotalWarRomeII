@@ -26,7 +26,6 @@ province_stats = {
     # Grain resource provides food per adjacent region + per region in province
     # hard to account for it. Can hardcode this or just remember about it.
     ('rom_building_food_farming_grain', 'this_region'): 'food',
-    ('rom_building_food_consumption', 'this_region'): 'food',
     ('rom_building_food_reserves', 'this_region'): 'food',
     ('rom_building_food_trade', 'this_region'): 'food',
     ('rom_building_food_fishing', 'this_region'): 'food',
@@ -35,6 +34,12 @@ province_stats = {
 
     ('rom_building_culture_conversion_balkan', 'this_region'): 'culture',
 }
+
+# Some values in database should flip sign with accordance to application.
+province_negate_stats = {
+    ('rom_building_food_consumption', 'this_region'): 'food',
+}
+
 
 # edict
 # barb_religious_dacian_gebelizis_2 name:Grove of Gebeleizis
