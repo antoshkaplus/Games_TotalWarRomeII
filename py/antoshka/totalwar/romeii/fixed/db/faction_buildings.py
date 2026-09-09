@@ -34,5 +34,8 @@ def list_faction_buildings(faction_code_name: FactionCodeName,
                                         building_culture_list))
     building_culture_list = list(filter(lambda b: '_nomad_' not in b.building_code_name,
                                         building_culture_list))
+    building_culture_list = list(filter(lambda b: '_slum' not in b.building_code_name,
+                                        building_culture_list))
+
     building_code_names = set(b.building_code_name for b in building_culture_list)
     return building_code_names
