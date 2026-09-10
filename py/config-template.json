@@ -1,0 +1,4 @@
+{
+  "FixedDbPath": "[path to .db file]",
+  "GamesDbPath": "[path to .db file]"
+}

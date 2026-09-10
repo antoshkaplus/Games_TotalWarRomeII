@@ -1,5 +1,4 @@
 import copy
-
 from util import read_yaml, filter_tree
 from solver import Solver, WorkflowItem
 from stats import Stats, STATS_NAMES_LIST
