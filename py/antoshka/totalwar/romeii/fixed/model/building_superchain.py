@@ -1,5 +1,5 @@
 from __future__ import annotations
-from enum import StrEnum, auto
+from antoshka.totalwar.romeii.common import StrEnum, auto
 
 
 class BuildingSuperchain(StrEnum):
@@ -64,4 +64,4 @@ class BuildingSuperchain(StrEnum):
 
     @staticmethod
     def parse(superchain: str) -> BuildingSuperchain:
-        return BuildingSuperchain(superchain.lower())
+        return BuildingSuperchain(superchain)

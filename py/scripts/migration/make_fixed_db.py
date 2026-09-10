@@ -1,8 +1,13 @@
+import typing as ty
 import os
+import json
+import argparse
 import pandas as pd
 import numpy as np
+from antoshka.view.cli import add_parser
+from antoshka.totalwar.romeii.fixed.model.building_superchain import BuildingSuperchain
 from antoshka.totalwar.romeii.fixed.model import db
-
+from antoshka.totalwar.romeii import json_util
 
 root_path = '/home/antoshkaplus/Documents/Games_TotalWarRomeII/data_lfs/'
 db_path = os.path.join(root_path, 'fixed.db')
@@ -100,31 +105,17 @@ def insert_building_culture_screen():
         db.BuildingCultureScreen.bulk_create(item_list)
 
 
-def insert_province_screen():
+def insert_province():
     path = os.path.join(root_path, 'fixed/provinces.loc.tsv')
     df = pd.read_csv(path, sep='\t', comment='#')
     df['key'] = df['key'].str.removeprefix('provinces_onscreen_')
 
     item_list = []
     for _, row in df.iterrows():
-        ff = db.ProvinceScreen(province_code_name=row['key'],
-                               province_name=row['text'])
+        ff = db.Province(code_name=row['key'],
+                         province_name=row['text'])
         item_list.append(ff)
-    db.ProvinceScreen.bulk_create(item_list)
-
-
-def insert_region_screen():
-    path = os.path.join(root_path, 'fixed/regions.loc.tsv')
-    df = pd.read_csv(path, sep='\t', comment='#')
-    df = df[df['key'].str.startswith('regions_onscreen_')]
-    df['key'] = df['key'].str.removeprefix('regions_onscreen_')
-
-    item_list = []
-    for _, row in df.iterrows():
-        ff = db.RegionScreen(region_code_name=row['key'],
-                             settlement_name=row['text'])
-        item_list.append(ff)
-    db.RegionScreen.bulk_create(item_list)
+    db.Province.bulk_create(item_list)
 
 
 def insert_buildings():
@@ -152,4 +143,129 @@ def insert_buildings():
     db.Building.bulk_create(item_list)
 
 
-insert_buildings()
+def insert_regions():
+    path = os.path.join(root_path, 'fixed/regions.loc.tsv')
+    df_settlement_name = pd.read_csv(path, sep='\t', comment='#')
+    df_settlement_name = df_settlement_name[df_settlement_name['key'].str.startswith('regions_onscreen_')]
+    df_settlement_name['key'] = df_settlement_name['key'].str.removeprefix('regions_onscreen_')
+    settlement_name = {row['key']: row['text'] for _, row in df_settlement_name.iterrows()}
+
+    path = os.path.join(root_path, 'fixed/region_to_province_junctions.tsv')
+    df_province = pd.read_csv(path, sep='\t', comment='#')
+
+    provinces = {item.code_name: item for item in db.Province.select()}
+
+    item_list = []
+    for _, row in df_province.iterrows():
+        item = db.Region(code_name=row['region'],
+                         province=provinces[row['province']],
+                         settlement_name=settlement_name[row['region']])
+        item_list.append(item)
+    db.Region.bulk_create(item_list)
+
+
+def insert_region_start_pos_1():
+    path = os.path.join(root_path, 'fixed/start_pos_region_slot_templates.tsv')
+    df = pd.read_csv(path, sep='\t', comment='#')
+
+    regions = {item.code_name: item for item in db.Region.select()}
+
+    item_list = []
+    for idx, region_df in df.groupby(['campaign', 'region']):
+        campaign = idx[0]
+        region = idx[1]
+        port = False
+        province_capital = False
+        for _, row in region_df.iterrows():
+            if row['slot_template'] == 'port':
+                port = True
+            if row['slot_template'].startswith('major'):
+                province_capital = True
+        item = db.RegionStartPos(campaign_code_name=campaign,
+                                 region=regions[region],
+                                 port=port,
+                                 province_capital=province_capital)
+        item_list.append(item)
+    db.RegionStartPos.bulk_create(item_list)
+
+
+def insert_region_start_pos_2():
+    """
+    Requires startpos.esf file parsed into json per campaign
+    """
+    building_superchain = {item.code_name: BuildingSuperchain.parse(item.superchain)
+                           for item in db.Building.select()
+                           if item.superchain in set(BuildingSuperchain)}
+
+    region_start_pos = {(item.campaign_code_name, item.region.code_name): item
+                        for item in db.RegionStartPos.select()}
+
+    save_region_start_pos = []
+    campaigns = ['main_rome']
+    for cc in campaigns:
+        path = os.path.join(root_path, f'fixed/startpos_{cc}.json')
+        with open(path, 'r') as file:
+            obj = json.load(file)
+        regions_path = ('CAMPAIGN_STARTPOS/[]/CAMPAIGN_STARTPOS/[]/CAMPAIGN_ENV/[]/'
+                        'CAMPAIGN_MODEL/[]/WORLD/[]/REGION_MANAGER/[]/REGIONS_ARRAY/[]/[]/REGION')
+        regions_obj = json_util.go_to(obj, regions_path)
+        for idx, item in enumerate(regions_obj):
+            region_code_name = item[1]
+            buildings_path = '[]/REGION_SLOT_MANAGER/[]/REGION_SLOT_ARRAY/[]/[]/REGION_SLOT/[]/BUILDING_MANAGER/[]/BUILDING'
+            buildings_obj = json_util.go_to_list(item, buildings_path)
+
+            building_code_name = buildings_obj[3]
+            start_pos_key = (cc, region_code_name)
+            if building_superchain[building_code_name].resource_kind and start_pos_key in region_start_pos:
+                region_start_pos[start_pos_key].resource = building_superchain[building_code_name]
+                save_region_start_pos.append(region_start_pos[start_pos_key])
+
+    with db.DB.atomic():
+        for item in save_region_start_pos:
+            item.save(only=[db.RegionStartPos.resource])
+
+
+def insert_region_start_pos_all(_):
+    insert_region_start_pos_1()
+    insert_region_start_pos_2()
+
+
+def insert_region_effects(_):
+    path = os.path.join(root_path, 'fixed/regions.tsv')
+    df = pd.read_csv(path, sep='\t', comment='#')
+    df = df.replace({np.nan: None})
+
+    effect_bundle_region = {}
+    for _, row in df.iterrows():
+        if row['owner_bundle']:
+            effect_bundle_region[ row['owner_bundle'] ] = row['key']
+
+    item_list = []
+
+    path = os.path.join(root_path, 'fixed/effect_bundles_to_effects_junctions.tsv')
+    df = pd.read_csv(path, sep='\t', comment='#')
+    df['value'] = df['value'].astype(int)
+    for _, row in df.iterrows():
+        if row['effect_bundle_key'] in effect_bundle_region:
+            regon_code_name = effect_bundle_region[row['effect_bundle_key']]
+            item = db.RegionEffects(
+                region=db.Region(code_name=regon_code_name),
+                effect_bundle=row['effect_bundle_key'],
+                effect_name=row['effect_key'],
+                scope=row['effect_scope'],
+                value=row['value'])
+            item_list.append(item)
+
+    db.RegionEffects.bulk_create(item_list)
+
+
+parser = argparse.ArgumentParser(description='Save file db')
+sps = parser.add_subparsers()
+
+add_parser(sps, 'insert-region-start-pos', func=insert_region_start_pos_all)
+add_parser(sps, 'insert-region-effects', func=insert_region_effects)
+
+args = parser.parse_args()
+args.func(args)
+
+

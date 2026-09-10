@@ -36,3 +36,36 @@ def go_to(obj, path: str):
         return
 
     return go_to(obj['Nodes'], path[idx + 1:])
+
+
+def go_to_list(obj, path: str) -> list:
+    """
+    :param path:
+    * /  - separator
+    * [] - matches array of nodes
+    * ABC - matches a node with `Name` ABC, goes under `Nodes` structure.
+    """
+    if not path:
+        return [obj]
+
+    if not subscriptable(obj) or isinstance(obj, str):
+        return []
+
+    idx = path.find('/')
+    if idx == -1:
+        # expect a node with`Name` equal to path leftover
+        if ('Name' not in obj) or (obj['Name'] != path):
+            return []
+        return obj['Nodes']
+
+    prefix = path[:idx]
+    if prefix == '[]':
+        res = []
+        for item in obj:
+            res.extend(go_to_list(item, path[idx + 1:]))
+        return res
+
+    if ('Name' not in obj) or (obj['Name'] != prefix):
+        return []
+
+    return go_to_list(obj['Nodes'], path[idx + 1:])
