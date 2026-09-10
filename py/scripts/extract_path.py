@@ -23,7 +23,7 @@ parser.add_argument('source_path', type=pathlib.Path, help='Source json file pat
 parser.add_argument('--game-header', action='store_true')
 parser.add_argument('--regions', action='store_true')
 parser.add_argument('--setup', action='store_true')
-parser.add_argument('--custom-path', action='store_true')
+parser.add_argument('--custom-path', type=str)
 args = parser.parse_args()
 
 
@@ -64,6 +64,12 @@ if args.setup:
                     "CAMPAIGN_ENV/[]/CAMPAIGN_SETUP")
     target_obj, obj = json_extract_path(obj, extract_path)
     setup_json_path = source_json_path.with_stem(source_json_path.stem + '-SETUP')
+    with open(setup_json_path, 'w') as json_file:
+        json.dump(target_obj, json_file, indent=2)
+
+if args.custom_path:
+    target_obj, obj = json_extract_path(obj, args.custom_path)
+    setup_json_path = source_json_path.with_stem(source_json_path.stem + '-CUSTOM')
     with open(setup_json_path, 'w') as json_file:
         json.dump(target_obj, json_file, indent=2)
 
