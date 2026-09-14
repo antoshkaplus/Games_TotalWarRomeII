@@ -4,8 +4,12 @@ from antoshka.totalwar.romeii.common.db import UTC_DateTimeField
 from .base import BaseModel
 
 
-class RegionOwner(BaseModel):
+class RegionControlPlan(BaseModel):
     game = peewee.ForeignKeyField(Game)
-    ts = UTC_DateTimeField()
     region_code = peewee.CharField()
-    owner = peewee.BooleanField()
+    ts = UTC_DateTimeField()
+
+    class Meta:
+        indexes = (
+            (('game', 'region_code'), True),
+        )
