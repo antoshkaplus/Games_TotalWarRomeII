@@ -1,0 +1,1 @@
+from .games import attach_games_parser

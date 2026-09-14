@@ -2,4 +2,4 @@ import datetime
 
 
 utc_tz = datetime.timezone.utc
-utc_now = datetime.datetime.now(utc_tz)
+def utc_now(): return datetime.datetime.now(utc_tz)
