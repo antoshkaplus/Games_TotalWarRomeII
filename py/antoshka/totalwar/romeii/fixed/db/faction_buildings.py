@@ -1,5 +1,5 @@
 import typing as ty
-from antoshka.totalwar.romeii.campaign_type import CampaignType
+from antoshka.totalwar.romeii.campaign_name import CampaignName
 from antoshka.totalwar.romeii.fixed.model import db as fixed_db
 
 
@@ -8,7 +8,7 @@ type FactionCodeName = str
 
 
 def list_faction_buildings(faction_code_name: FactionCodeName,
-                      campaign_type: CampaignType = CampaignType.Grand) -> ty.Set[BuildingCodeName]:
+                           campaign_type: CampaignName = CampaignName.Grand) -> ty.Set[BuildingCodeName]:
     """
     faction_code_name = 'rom_getae'
     religious_flavor = 'dacian'
