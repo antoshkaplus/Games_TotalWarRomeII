@@ -4,7 +4,7 @@ import json
 import argparse
 import pandas as pd
 import numpy as np
-from antoshka.view.cli import add_parser
+from antoshka.totalwar.romeii.view.cli.parser_util import add_parser
 from antoshka.totalwar.romeii.fixed.model.building_superchain import BuildingSuperchain
 from antoshka.totalwar.romeii.fixed.model import db
 from antoshka.totalwar.romeii import json_util

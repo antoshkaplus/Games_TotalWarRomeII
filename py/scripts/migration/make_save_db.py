@@ -2,7 +2,7 @@ import os
 import json
 import argparse
 import pathlib
-from antoshka.view.cli import add_parser
+from antoshka.totalwar.romeii.view.cli.parser_util import add_parser
 from antoshka.totalwar.romeii.save.model import db, Faction
 from antoshka.totalwar.romeii import json_util
 
