@@ -8,11 +8,11 @@ from antoshka.totalwar.romeii.view.cli.parser_util import add_parser
 from antoshka.totalwar.romeii.fixed.model.building_superchain import BuildingSuperchain
 from antoshka.totalwar.romeii.fixed.model import db
 from antoshka.totalwar.romeii import json_util
+from antoshka.config import get_fixed_db_path
 
-root_path = '/home/antoshkaplus/Documents/Games_TotalWarRomeII/data_lfs/'
-db_path = os.path.join(root_path, 'fixed.db')
 
-db.DB.init(db_path)
+root_path = os.path.dirname(get_fixed_db_path())
+db.DB.init(get_fixed_db_path())
 db.make_tables()
 
 
