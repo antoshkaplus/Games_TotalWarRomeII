@@ -14,6 +14,7 @@ province_stats = {
     ('rom_building_gdp_mod_agriculture_all', 'regions_in_this_province'): 'wealth_pct_agri',
     ('rom_building_gdp_mod_agriculture_farming', 'regions_in_this_province'): 'wealth_pct_farming',
     ('rom_building_gdp_mod_industry', 'regions_in_this_province'): 'wealth_pct_industry',
+    ('rom_building_gdp_mod_industry_manufacturing', 'regions_in_this_province'): 'wealth_pct_mnfr',
     ('rom_building_gdp_mod_industry_mining', 'regions_in_this_province'): 'wealth_pct_mining',
     ('rom_building_gdp_mod_culture_entertainment', 'regions_in_this_province'): 'wealth_pct_fun',
     ('rom_building_gdp_mod_culture_all', 'regions_in_this_province'): 'wealth_pct_culture',
@@ -33,13 +34,14 @@ province_stats = {
     ('rom_building_growth_all', 'this_province'): 'growth',
 
     ('rom_building_culture_conversion_balkan', 'this_region'): 'culture',
+
+    ('rom_building_recruitment_points', 'this_province'): 'recruit_slots'
 }
 
 # Some values in database should flip sign with accordance to application.
 province_negate_stats = {
     ('rom_building_food_consumption', 'this_region'): 'food',
 }
-
 
 # edict
 # barb_religious_dacian_gebelizis_2 name:Grove of Gebeleizis
@@ -51,13 +53,33 @@ province_negate_stats = {
 
 faction_stats = {
     ('rom_building_gdp_mod_agriculture_all', 'in_all_your_regions'): 'wealth_pct_agri',
+    ('rom_building_gdp_mod_agriculture_all', 'this_province_faction_all_regions'): 'wealth_pct_agri',
     ('rom_building_gdp_mod_industry_mining', 'in_all_your_regions'): 'wealth_pct_mining',
     ('rom_building_gdp_mod_industry_manufacturing', 'in_all_your_regions'): 'wealth_pct_mnfr',
     ('rom_building_gdp_mod_trade_all', 'in_all_your_regions'): 'wealth_pct_com',
 
     ('rom_building_public_order_happiness_sanitation', 'in_all_your_provinces'): 'order',
     ('rom_building_public_order_happiness', 'in_all_your_provinces'): 'order',
+    ('rom_building_public_order_happiness', 'this_province_faction_all_provinces'): 'order',
 
     ('rom_building_trade_tariffs_all', 'this_faction'): 'tariff_trade_agree_pct',
     ('rom_building_research_points', 'this_faction'): 'research_pct',
+
+    ('rom_building_building_cost_mod', 'this_province_faction_all_regions'): 'build_cost_pct',
+    ('rom_building_gdp_mod_culture_all', 'this_province_faction_all_regions'): 'wealth_pct_culture',
+    ('rom_building_gdp_mod_trade_sea', 'this_province_faction_all_regions'):  'wealth_pct_mari_com',
+    ('rom_building_tax_level', 'this_province_faction_all_provinces'): 'tax_pct',
+    ('rom_building_recruitment_points_naval', 'this_province_faction_all_sea_regions'): 'recruit_slots_fleet',
+    ('rom_building_trade_tariffs_all', 'this_province_faction'): 'tariff_trade_agree_pct',
+    ('rom_building_research_points_mod_civil', 'this_province_faction'): 'research_pct_civil',
+    # Negative value reduces penalty from foreign culture.
+    ('rom_faction_public_order_foreign_culture_penalty', 'this_province_faction_all_provinces'): 'order_pct_foreign_culture',
+    ('rom_building_research_points_mod_military', 'this_province_faction'): 'research_pct_military',
+    ('rom_province_growth_province_effects', 'this_province_faction_all_provinces'): 'growth',
+    ('rom_force_unit_mod_morale', 'this_province_faction_all_armies'): 'morale_army',
+    ('rom_force_unit_mod_morale', 'this_province_faction_all_forces'): 'morale',
+    ('rom_province_initiative_festival_mod_happiness_entertainment', 'this_province_faction_all_provinces'): '',
+    ('rom_province_initiative_festival_mod_gdp_entertainment_mod', 'this_province_faction_all_provinces'): '',
+    ('rom_force_unit_mod_bows_missile_range', 'this_province_faction_all_forces'): 'bow_range_pct',
+    ('rom_building_culture_conversion_to_state_culture', 'this_province_faction'): 'culture',
 }

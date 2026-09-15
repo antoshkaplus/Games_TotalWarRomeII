@@ -1,4 +1,3 @@
-from .faction_stats import faction_stats
 
 
 STATS_NAMES_LIST = ['wealth_pct_all', 'wealth_pct_industry', 'wealth_pct_mnfr', 'wealth_pct_mining', 'wealth_pct_agri', 'wealth_pct_farming', 'wealth_pct_com',
@@ -17,6 +16,7 @@ class Stats:
         self.wealth_pct_agri = 0
         self.wealth_pct_farming = 0
         self.wealth_pct_com = 0
+        self.wealth_pct_mari_com = 0
         self.wealth_pct_culture = 0
         self.wealth_pct_fun = 0
         self.wealth_subsistence = 0
@@ -36,20 +36,14 @@ class Stats:
     @property
     def wealth(self):
         w = (0.01 * self.wealth_subsistence * (100 + self.wealth_pct_all) +
-             0.01 * self.wealth_fun * (100 + faction_stats.wealth_pct_culture + self.wealth_pct_all
-                                       + self.wealth_pct_culture + self.wealth_pct_fun) +
-             0.01 * self.wealth_learning * (100 + faction_stats.wealth_pct_culture + self.wealth_pct_all
-                                            + self.wealth_pct_culture) +
-             0.01 * self.wealth_mnfr * (100 + faction_stats.wealth_pct_industry + self.wealth_pct_all
-                                        + self.wealth_pct_industry + self.wealth_pct_mnfr) +
-             0.01 * self.wealth_mining * (100 + faction_stats.wealth_pct_industry + self.wealth_pct_all
-                                          + self.wealth_pct_industry + self.wealth_pct_mining) +
-             0.01 * (self.wealth_mari_com + self.wealth_local_com) * (100 + faction_stats.wealth_pct_com
-                                                                      + self.wealth_pct_all + self.wealth_pct_com) +
-             0.01 * self.wealth_farming * (100 + faction_stats.wealth_pct_agri
-                                           + self.wealth_pct_all + self.wealth_pct_agri + self.wealth_pct_farming) +
-             0.01 * self.wealth_livestock * (100 + faction_stats.wealth_pct_agri
-                                             + self.wealth_pct_all + self.wealth_pct_agri))
+             0.01 * self.wealth_fun * (100 + self.wealth_pct_all + self.wealth_pct_culture + self.wealth_pct_fun) +
+             0.01 * self.wealth_learning * (100 + self.wealth_pct_all + self.wealth_pct_culture) +
+             0.01 * self.wealth_mnfr * (100 + self.wealth_pct_all + self.wealth_pct_industry + self.wealth_pct_mnfr) +
+             0.01 * self.wealth_mining * (100 + self.wealth_pct_all + self.wealth_pct_industry + self.wealth_pct_mining) +
+             0.01 * self.wealth_mari_com * (100 + self.wealth_pct_all + self.wealth_pct_com + self.wealth_pct_mari_com) +
+             0.01 * self.wealth_local_com * (100 + self.wealth_pct_all + self.wealth_pct_com) +
+             0.01 * self.wealth_farming * (100 + self.wealth_pct_all + self.wealth_pct_agri + self.wealth_pct_farming) +
+             0.01 * self.wealth_livestock * (100 + self.wealth_pct_all + self.wealth_pct_agri))
         return w
 
     def __iadd__(self, other):

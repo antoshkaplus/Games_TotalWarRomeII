@@ -5,6 +5,6 @@ class CampaignName(StrEnum):
     Grand = auto()
 
 
-CAMPAIGN_NAME_CODE = {
+CAMPAIGN_NAME_TO_CODE = {
     CampaignName.Grand: 'main_rome'
 }

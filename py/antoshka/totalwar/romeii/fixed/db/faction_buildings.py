@@ -8,7 +8,7 @@ type FactionCodeName = str
 
 
 def list_faction_buildings(faction_code_name: FactionCodeName,
-                           campaign_type: CampaignName = CampaignName.Grand) -> ty.Set[BuildingCodeName]:
+                           campaign_name: CampaignName = CampaignName.Grand) -> ty.Set[BuildingCodeName]:
     """
     faction_code_name = 'rom_getae'
     religious_flavor = 'dacian'
