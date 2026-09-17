@@ -3,8 +3,8 @@ from collections import defaultdict
 from antoshka.totalwar.romeii.common.datetime import utc_now
 from antoshka.totalwar.romeii.games.model import db as games_db, ProvinceBuild, ProvinceBuildKind
 from antoshka.totalwar.romeii.games.db import list_control_plan_regions
-from antoshka.totalwar.romeii.campaign_name import CampaignName, CAMPAIGN_NAME_TO_CODE
 from antoshka.totalwar.romeii.fixed.model import db as fixed_db, BuildingSuperchain
+from antoshka.totalwar.romeii.fixed.model.campaign_name import CampaignName, CAMPAIGN_NAME_TO_CODE
 from antoshka.totalwar.romeii.fixed.db import (get_province_by_name as fixed_db__get_province_by_name,
                                                list_faction_buildings as fixed_db__list_faction_buildings)
 from antoshka.totalwar.romeii.regionsopt.fixed.building_api import list_buildings as opt_api__list_buildings

@@ -1,10 +1,10 @@
 import copy
-import typing
+import typing as ty
 from .solution import Solution
 from .buildings_tree import BuildingsTree
 
 
-def initial_candidates(regions_lists : typing.List[typing.List[str]], bt : BuildingsTree):
+def initial_candidates(regions_lists : ty.List[ty.List[str]], bt : BuildingsTree) -> ty.List[Solution]:
     # returns solution candidates
 
     candidates = [regions_lists]
@@ -26,7 +26,7 @@ def initial_candidates(regions_lists : typing.List[typing.List[str]], bt : Build
                 raise RuntimeError(f"Unable to find leaf for {r}, {b_name}")
             candidates = new_candidates
 
-    def list_to_solution(regions):
+    def list_to_solution(regions) -> Solution:
         solution = Solution(len(regions))
         for i, r in enumerate(regions):
             for name in r:

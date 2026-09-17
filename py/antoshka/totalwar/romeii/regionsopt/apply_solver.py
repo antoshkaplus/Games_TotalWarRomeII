@@ -13,15 +13,19 @@ type RegionBuild = ty.List[str]
 type ProvinceBuild = ty.List[RegionBuild]
 
 
-# To provide extra_stats
+# To provide init_stats
 # we need to pick up primary build for every province and pick bonuses from those.
 # no need for current builds. Only primary build matters.
 
 
 class GameParams:
-    def __init__(self, buildings: ty.Dict[BuildingId, Building], extra_stats: Stats):
+    def __init__(self, buildings: ty.Dict[BuildingId, Building], init_stats: Stats):
+        """
+        :param init_stats: Include all region bonuses, all faction bonuses, all resource bonuses,
+        except current region resource bonus.
+        """
         self.buildings = buildings
-        self.extra_stats = extra_stats
+        self.init_stats = init_stats
 
 class ProvinceParams:
     def __init__(self, regions: ProvinceBuild, port_regions: ty.List[Idx], no_major: bool):
@@ -86,6 +90,9 @@ def apply_solver(params: ApplySolverParams) -> ty.Optional[Solution]:
     prune_heuristic = lambda s: (-min(s.stats.food-min_food, 0) + -min(s.stats.order-min_order, 0), -s.stats.wealth)
 
     candidates = initial_candidates(params.province_params.regions, bt)
+    for c_ in candidates:
+        c_.stats += params.game_params.init_stats
+
     # for c in candidates:
     #     if research:  # param research=False
     #         c.add(0, 'Bardic Circle', bt.buildings_stats['Bardic Circle'])
