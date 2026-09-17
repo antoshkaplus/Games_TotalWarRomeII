@@ -52,6 +52,7 @@ def insert_factions():
     faction_list = []
     for _, row in df.iterrows():
         ff = db.Faction(code_name=row['key'],
+                        # In reality this is diplomacy culture. But should be the same.
                         culture=row['diplomacy_culture'],
                         subculture=row['subculture'],
                         screen_name=row['screen_name'])
@@ -259,11 +260,37 @@ def insert_region_effects(_):
     db.RegionEffects.bulk_create(item_list)
 
 
+def insert_building_chain_availability(_):
+    path = os.path.join(root_path, 'fixed/building_chain_availability_sets.tsv')
+    df_sets = pd.read_csv(path, sep='\t', comment='#')
+
+    path = os.path.join(root_path, 'fixed/building_chain_availabilities.tsv')
+    df = pd.read_csv(path, sep='\t', comment='#')
+
+    df = pd.merge(df, df_sets, how='left', left_on='set_id', right_on='id')
+    df = df[['building_chain', 'culture', 'faction', 'sub_culture', 'campaign']]
+    df = df.replace({np.nan: None})
+
+    item_list = []
+    for row in df.to_records():
+        item = {
+            'chain': row['building_chain'],
+            'culture': row['culture'],
+            'subculture': row['sub_culture'],
+            'faction': row['faction'],
+            'campaign': row['campaign']
+        }
+        item_list.append(item)
+
+    db.BuildingChainAvailability.insert_many(item_list).on_conflict_ignore().execute()
+
+
 parser = argparse.ArgumentParser(description='Save file db')
 sps = parser.add_subparsers()
 
 add_parser(sps, 'insert-region-start-pos', func=insert_region_start_pos_all)
 add_parser(sps, 'insert-region-effects', func=insert_region_effects)
+add_parser(sps, 'insert-chain-availability', func=insert_building_chain_availability)
 
 args = parser.parse_args()
 args.func(args)
