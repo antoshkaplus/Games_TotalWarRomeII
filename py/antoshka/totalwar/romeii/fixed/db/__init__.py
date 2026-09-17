@@ -1,5 +1,5 @@
 from antoshka.totalwar.romeii.fixed.model import db as fixed_db
-from .faction_buildings import list_faction_buildings
+from .faction_buildings import list_faction_buildings, list_faction_buildings_names
 
 
 def get_province_by_name(province_name: str) -> fixed_db.Province:
