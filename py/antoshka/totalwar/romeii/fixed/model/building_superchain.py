@@ -9,6 +9,12 @@ class BuildingSuperchain(StrEnum):
     MilitaryBuff = auto() # major
     MilitaryMain = auto() # both
     MilitarySecondary = auto() # both
+
+    Industry = auto()
+    MilitarySiege = auto()
+    TownCentre = auto()
+    Sanitation = auto()
+
     Mine = auto() # minor
     Port = auto() # special
 
