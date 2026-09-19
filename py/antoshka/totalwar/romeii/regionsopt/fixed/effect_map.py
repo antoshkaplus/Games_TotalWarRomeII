@@ -1,3 +1,7 @@
+import typing as ty
+from antoshka.totalwar.romeii.fixed.model import db as fixed_db
+from ..stats import Stats
+
 
 province_stats = {
     ('rom_building_gdp_agriculture_animal_husbandry', 'this_building'): 'wealth_livestock',
@@ -83,3 +87,27 @@ faction_stats = {
     ('rom_force_unit_mod_bows_missile_range', 'this_province_faction_all_forces'): 'bow_range_pct',
     ('rom_building_culture_conversion_to_state_culture', 'this_province_faction'): 'culture',
 }
+
+
+class _ProvinceFactionStats:
+    def __init__(self):
+        self.province_stats = Stats()
+        self.faction_stats = Stats()
+
+
+def effects_to_stats(effects: ty.Iterable[ty.Union[fixed_db.RegionEffects, fixed_db.BuildingEffect]]):
+    res = _ProvinceFactionStats()
+    for e_ in effects:
+        pair = (e_.effect_name, e_.scope)
+        if pair in province_stats:
+            stat_name = province_stats[pair]
+            res.province_stats += Stats({stat_name: e_.value})
+
+        if pair in province_negate_stats:
+            stat_name = province_negate_stats[pair]
+            res.province_stats += Stats({stat_name: -e_.value})
+
+        if pair in faction_stats:
+            stat_name = faction_stats[pair]
+            res.faction_stats += Stats({stat_name: e_.value})
+    return res

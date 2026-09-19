@@ -5,7 +5,7 @@ from .base import BaseModel
 
 
 class RegionControlPlan(BaseModel):
-    game = peewee.ForeignKeyField(Game)
+    game = peewee.ForeignKeyField(Game, backref='regions_plan_control')
     region_code = peewee.CharField()
     ts = UTC_DateTimeField()
 

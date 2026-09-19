@@ -8,6 +8,9 @@ from .building import Building
 
 
 def list_buildings(faction_code_name: str) -> ty.List[Building]:
+    """
+    :return: Does not include Resources faction-wide stats.
+    """
     code_names = list_faction_buildings(faction_code_name)
 
     buildings = {item.code_name: item for item in db.Building.select().where(db.Building.code_name.in_(code_names))}
@@ -22,10 +25,6 @@ def list_buildings(faction_code_name: str) -> ty.List[Building]:
         if pair in effect_map.province_negate_stats:
             my_effect_name = effect_map.province_negate_stats[pair]
             building_effects[item.code_name][my_effect_name] = -item.value
-
-        if pair in effect_map.faction_stats:
-            my_effect_name = effect_map.faction_stats[pair]
-            building_effects[item.code_name][my_effect_name] = item.value
 
     # since need to assign parents, map `TO` -> `FROM`
     building_upgrade = { item.to_code_name: item.from_code_name
