@@ -285,12 +285,75 @@ def insert_building_chain_availability(_):
     db.BuildingChainAvailability.insert_many(item_list).on_conflict_ignore().execute()
 
 
+def insert_faction_group_effects(_):
+    path = os.path.join(root_path, 'fixed/faction_to_faction_groups_junctions.tsv')
+    df_faction_to_faction_group = pd.read_csv(path, sep='\t', comment='#')
+    path = os.path.join(root_path, 'fixed/faction_groups.tsv')
+    df_faction_group_to_effect_bundles = pd.read_csv(path, sep='\t', comment='#')
+
+    df = pd.merge(df_faction_to_faction_group, df_faction_group_to_effect_bundles,
+                  how='left', left_on='faction_group_key', right_on='key')
+    df = df[['faction_key', 'effect_bundle']]
+
+    path = os.path.join(root_path, 'fixed/effect_bundles_to_effects_junctions.tsv')
+    df_effect_bundle_to_effect = pd.read_csv(path, sep='\t', comment='#')
+
+    df = pd.merge(df, df_effect_bundle_to_effect,
+                  how='left', left_on='effect_bundle', right_on='effect_bundle_key')
+    item_list = []
+    for row in df.to_records():
+        item = {
+            'faction': row['faction_key'],
+            'political_party': None,
+            'effect_bundle': row['effect_bundle'],
+            'effect_name': row['effect_key'],
+            'scope': row['effect_scope'],
+            'value': row['value']
+        }
+        item_list.append(item)
+
+    db.FactionEffect.insert_many(item_list).on_conflict_ignore().execute()
+
+
+def insert_political_party_effects(_):
+    path = os.path.join(root_path, 'fixed/faction_political_parties_junctions.tsv')
+    df_political_party_to_faction = pd.read_csv(path, sep='\t', comment='#')
+    path = os.path.join(root_path, 'fixed/political_parties.tsv')
+    df_political_party_to_effect_bundles = pd.read_csv(path, sep='\t', comment='#')
+
+    df = pd.merge(df_political_party_to_faction, df_political_party_to_effect_bundles,
+                  how='left', left_on='political_party_key', right_on='key')
+    df = df[df['playable']]
+    df = df[['faction_key', 'political_party_key', 'effect_bundle']]
+
+    path = os.path.join(root_path, 'fixed/effect_bundles_to_effects_junctions.tsv')
+    df_effect_bundle_to_effect = pd.read_csv(path, sep='\t', comment='#')
+
+    df = pd.merge(df, df_effect_bundle_to_effect,
+                  how='left', left_on='effect_bundle', right_on='effect_bundle_key')
+    item_list = []
+    for row in df.to_records():
+        item = {
+            'faction': row['faction_key'],
+            'political_party': row['political_party_key'],
+            'effect_bundle': row['effect_bundle'],
+            'effect_name': row['effect_key'],
+            'scope': row['effect_scope'],
+            'value': row['value']
+        }
+        item_list.append(item)
+
+    db.FactionEffect.insert_many(item_list).on_conflict_ignore().execute()
+
+
 parser = argparse.ArgumentParser(description='Save file db')
 sps = parser.add_subparsers()
 
 add_parser(sps, 'insert-region-start-pos', func=insert_region_start_pos_all)
 add_parser(sps, 'insert-region-effects', func=insert_region_effects)
 add_parser(sps, 'insert-chain-availability', func=insert_building_chain_availability)
+add_parser(sps, 'insert-faction-group-effects', func=insert_faction_group_effects)
+add_parser(sps, 'insert-political-party-effects', func=insert_political_party_effects)
 
 args = parser.parse_args()
 args.func(args)
