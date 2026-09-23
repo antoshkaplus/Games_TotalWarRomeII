@@ -3,16 +3,16 @@ from antoshka.totalwar.romeii.common.datetime import utc_now
 from antoshka.totalwar.romeii.games.model import db as games_db
 from antoshka.totalwar.romeii.games.db import list_control_plan_regions
 from antoshka.totalwar.romeii.fixed.model import db as fixed_db
+from antoshka.totalwar.romeii.regionsopt.fixed import effect_map
 from antoshka.totalwar.romeii.view.cli.parser_util import add_parser
 from .util import get_selected_game
-from antoshka.totalwar.romeii.regionsopt.fixed import effect_map
 
 
 def add_region(args):
     game = get_selected_game()
 
     conditions = [fixed_db.RegionStartPos.campaign_code_name == game.campaign_code,
-                  fixed_db.Region.settlement_name.startswith(args.region)]
+                  fixed_db.Region.settlement_name.startswith(args.region_name)]
     regions = list(fixed_db.Region.select()
                    .join(fixed_db.RegionStartPos)
                    .where(*conditions))
@@ -33,7 +33,7 @@ def attach_region_parser(sps):
     sps = p.add_subparsers()
 
     p = add_parser(sps, 'add', func=add_region)
-    p.add_argument('region', type=str)
+    p.add_argument('region_name', type=str)
 
 
 def list_provinces(args):
