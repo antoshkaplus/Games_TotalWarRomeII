@@ -15,7 +15,10 @@ class FactionEffect(BaseModel):
     scope = peewee.CharField()
     value = peewee.IntegerField()
 
-    class Meta:
-        indexes = (
-            (('faction', 'political_party', 'effect_name'), True),
-        )
+
+def add_faction_effect_index():
+    idx = FactionEffect.index(FactionEffect.faction,
+                              peewee.fn.COALESCE(FactionEffect.political_party, ''),
+                              FactionEffect.effect_name,
+                              unique=True)
+    FactionEffect.add_index(idx)

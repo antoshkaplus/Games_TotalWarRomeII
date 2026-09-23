@@ -10,10 +10,11 @@ from .region import Region
 from .region_effects import RegionEffects
 from .region_start_pos import RegionStartPos
 from .building_chain_availability import BuildingChainAvailability
-from .faction_effects import FactionEffect
+from .faction_effects import FactionEffect, add_faction_effect_index
 
 
 def make_tables():
+    add_faction_effect_index()
     DB.create_tables([BuildingEffect, BuildingUpgrade, Faction,
                       BuildingCulture, BuildingCultureScreen, Building,
                       Province, Region, RegionEffects, RegionStartPos,
