@@ -9,6 +9,9 @@ class Game(BaseModel):
     id = AutoIncrementField(primary_key=True)
     campaign_code = peewee.CharField()
     faction_code = peewee.CharField()
+    # During game creation look up in fixed_db.
+    # Populate if single, ask user to specify if multiple.
+    political_party = peewee.CharField()
     create_ts = UTC_DateTimeField()
     save_file_game_id = peewee.CharField(unique=True, null=True)
     # Should be selected once created.
@@ -18,4 +21,3 @@ class Game(BaseModel):
         indexes = (
             (('campaign_code', 'faction_code', 'create_ts'), True),
         )
-
