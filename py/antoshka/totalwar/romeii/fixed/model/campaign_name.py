@@ -20,6 +20,7 @@ CAMPAIGN_NAME_TO_CODE = {
     CampaignName.WrathOfSparta: 'main_greek',
     CampaignName.HannibalAtTheGates: 'main_punic',
 }
+CAMPAIGN_CODE_TO_NAME = {v_: k_ for k_, v_ in CAMPAIGN_NAME_TO_CODE.items()}
 
 
 def faction_code_campaign_name(faction_code: str) -> CampaignName:
