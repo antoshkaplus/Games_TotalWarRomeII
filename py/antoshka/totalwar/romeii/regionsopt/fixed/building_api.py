@@ -5,6 +5,7 @@ from antoshka.totalwar.romeii.fixed.model import db
 from antoshka.totalwar.romeii.fixed.model.building_superchain import BuildingSuperchain
 from . import effect_map
 from .building import Building
+from .effect_map import ProvinceFactionStats
 
 
 def list_buildings(faction_code_name: str) -> ty.List[Building]:
@@ -39,3 +40,13 @@ def list_buildings(faction_code_name: str) -> ty.List[Building]:
         res.append(bb)
 
     return res
+
+
+def list_buildings_stats(building_codes: ty.Iterable[str]) -> ty.Dict[str, effect_map.ProvinceFactionStats]:
+    building_effects = defaultdict(list)
+    for item in db.BuildingEffect.select().where(db.BuildingEffect.code_name.in_(building_codes)):
+        building_effects[item.code_name].append(item)
+    buildings_stats = {}
+    for building_code, effects in building_effects.items():
+        buildings_stats[building_code] = effect_map.effects_to_stats(effects)
+    return buildings_stats

@@ -86,17 +86,40 @@ faction_stats = {
     ('rom_province_initiative_festival_mod_gdp_entertainment_mod', 'this_province_faction_all_provinces'): '',
     ('rom_force_unit_mod_bows_missile_range', 'this_province_faction_all_forces'): 'bow_range_pct',
     ('rom_building_culture_conversion_to_state_culture', 'this_province_faction'): 'culture',
+
+    # Positive value reduces order penalty when occupying foreign lands.
+    ('rom_faction_trait_successor_core_alexander_legacy', 'this_faction'): 'order_pct_occupation',
+
+    # Baktria
+    ('rom_faction_trait_successor_baktria_silk_road', 'in_all_your_regions_unseen'): 'wealth_pct_com',
+    ('rom_faction_trait_eastern_parthia_multiculturalism', 'in_all_your_provinces_unseen'): 'order_pct_foreign_culture',
+    # Iceni
+    ('rom_faction_trait_britannic_iceni_pastoral_ways', 'in_all_your_regions_unseen'): 'wealth_pct_agri'
 }
 
 
-class _ProvinceFactionStats:
+class ProvinceFactionStats:
     def __init__(self):
         self.province_stats = Stats()
         self.faction_stats = Stats()
 
+    def __iadd__(self, other: ProvinceFactionStats):
+        self.province_stats += other.province_stats
+        self.faction_stats += other.faction_stats
+        return self
 
-def effects_to_stats(effects: ty.Iterable[ty.Union[fixed_db.RegionEffects, fixed_db.BuildingEffect]]):
-    res = _ProvinceFactionStats()
+    def __add__(self, other: ProvinceFactionStats):
+        res = ProvinceFactionStats()
+        res.province_stats = self.province_stats + other.province_stats
+        res.faction_stats = self.faction_stats + other.faction_stats
+        return res
+
+
+def effects_to_stats(effects: ty.Iterable[ty.Union[fixed_db.RegionEffects, fixed_db.BuildingEffect, fixed_db.FactionEffect]]) -> ProvinceFactionStats:
+    global province_stats
+    global faction_stats
+
+    res = ProvinceFactionStats()
     for e_ in effects:
         pair = (e_.effect_name, e_.scope)
         if pair in province_stats:
