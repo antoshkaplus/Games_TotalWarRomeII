@@ -346,6 +346,36 @@ def insert_political_party_effects(_):
     db.FactionEffect.insert_many(item_list).on_conflict_ignore().execute()
 
 
+def insert_technologies(_):
+    # Has fields 'is_civil', 'is_engineering', 'is_military',
+    # but game does not have a separate 'is_engineering' branch.
+    # Instead, is made or of military Engineering and civil Construction branches.
+    path = os.path.join(root_path, 'fixed/technologies.tsv')
+    df = pd.read_csv(path, sep='\t', comment='#')
+    df = df[['key', 'research_points_required', 'cost_per_round']]
+
+    item_list = []
+    for _, row in df.iterrows():
+        item = db.Technology(code_name=row['key'],
+                             research_points=row['research_points_required'],
+                             cost_per_round=row['cost_per_round'])
+        item_list.append(item)
+    db.Technology.bulk_create(item_list)
+
+
+def insert_building_technology(_):
+    path = os.path.join(root_path, 'fixed/building_level_required_technology_junctions.tsv')
+    # Columns: 'building_level_key', 'technology_key'
+    df = pd.read_csv(path, sep='\t', comment='#')
+
+    item_list = []
+    for _, row in df.iterrows():
+        item = db.BuildingTechnology(building=row['building_level_key'],
+                                     technology=row['technology_key'])
+        item_list.append(item)
+    db.BuildingTechnology.bulk_create(item_list)
+
+
 parser = argparse.ArgumentParser(description='Save file db')
 sps = parser.add_subparsers()
 
@@ -354,6 +384,8 @@ add_parser(sps, 'insert-region-effects', func=insert_region_effects)
 add_parser(sps, 'insert-chain-availability', func=insert_building_chain_availability)
 add_parser(sps, 'insert-faction-group-effects', func=insert_faction_group_effects)
 add_parser(sps, 'insert-political-party-effects', func=insert_political_party_effects)
+add_parser(sps, 'insert-technologies', func=insert_technologies)
+add_parser(sps, 'insert-building-technology', func=insert_building_technology)
 
 args = parser.parse_args()
 args.func(args)
