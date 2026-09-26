@@ -1,7 +1,9 @@
+import types
 import typing as ty
 from enum import StrEnum as _StrEnum, auto
 
 
+Ctx = types.SimpleNamespace
 T = ty.TypeVar('T')
 
 
