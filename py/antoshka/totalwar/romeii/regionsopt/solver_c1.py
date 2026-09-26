@@ -45,7 +45,8 @@ class AlgoParams:
 
 class SolutionParams:
     def __init__(self, min_food: int = 0, min_order: int = 0,
-                 depth: ty.Optional[int] = None, no_resources: bool = False):
+                 depth: ty.Optional[int] = None,
+                 no_resources: bool = False):
         self.min_food = min_food
         self.min_order = min_order
         self.depth = depth
