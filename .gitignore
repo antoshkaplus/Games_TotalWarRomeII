@@ -1,5 +1,5 @@
 
 .idea/
-build/
+cpp/build/
 __pycache__/
 tmp/
