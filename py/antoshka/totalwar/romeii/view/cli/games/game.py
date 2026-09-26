@@ -1,4 +1,4 @@
-from antoshka.totalwar.romeii.common.datetime import utc_now
+from antoshka.totalwar.romeii.common.datetime import utc_now, date_to_str
 from antoshka.totalwar.romeii.games.model import db as games_db
 from antoshka.totalwar.romeii.fixed.model import db as fixed_db
 from antoshka.totalwar.romeii.fixed.model.campaign_name import CampaignName, CAMPAIGN_NAME_TO_CODE
@@ -43,10 +43,20 @@ def attach_create_game_parser(sps):
     # add_parser(sps, 'from-save')
 
 
+def list_games(args):
+    games = list(games_db.Game.select())
+    games.sort(key=lambda x: x.last_selected, reverse=True)
+    print(f'Count: {len(games)}')
+    for g_ in games:
+        s = f'id: {g_.id}, {g_.campaign_code} {g_.faction_code} {g_.political_party}, created: {date_to_str(g_.create_ts)}'
+        print(s)
+
+
 def attach_game_parser(sps):
     p = sps.add_parser('game')
     sps = p.add_subparsers()
 
     attach_create_game_parser(sps)
+    add_parser(sps, 'list', func=list_games)
 
     # need list command

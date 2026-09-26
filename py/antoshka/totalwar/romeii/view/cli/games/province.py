@@ -5,7 +5,7 @@ from antoshka.totalwar.romeii.games.db import list_control_plan_regions
 from antoshka.totalwar.romeii.fixed.model import db as fixed_db
 from antoshka.totalwar.romeii.regionsopt.fixed import effect_map
 from antoshka.totalwar.romeii.view.cli.parser_util import add_parser
-from .util import get_selected_game
+from .util import get_selected_game, approx_province_by_name
 
 
 def add_region(args):
@@ -40,8 +40,9 @@ def list_provinces(args):
     game = get_selected_game()
     region_codes = list_control_plan_regions(game.id)
 
-    regions = fixed_db.Region.select().where(fixed_db.Region.code_name.in_(region_codes))
-
+    regions = list(fixed_db.Region.select().where(fixed_db.Region.code_name.in_(region_codes)))
+    if len(regions) == 0:
+        print('No regions in control plan.')
 
     provinces = defaultdict(list)
     for ro in regions:
@@ -81,11 +82,27 @@ def list_provinces(args):
             print(po_name, ':', [r_.settlement_name for r_ in rs])
 
 
+def add_province(args):
+    game = get_selected_game()
+
+    province = approx_province_by_name(args.province_name_prefix)
+    now = utc_now()
+    add_control_regions = [{'game': game.id,
+                            'region_code': r_.code_name,
+                            'ts': now}  for r_ in province.regions]
+    games_db.RegionControlPlan.insert_many(add_control_regions).on_conflict_ignore().execute()
+    print(f'Province `{province.province_name}` regions {', '.join(r_.settlement_name for r_ in province.regions)} in Control Plan.')
+
+
 def attach_province_parser(sps):
     p = sps.add_parser('province')
     sps = p.add_subparsers()
 
-    p = add_parser(sps, 'list', func=list_provinces)
+    add_parser(sps, 'list', func=list_provinces)
+
+    p = add_parser(sps, 'add', func=add_province)
+    p.add_argument('province_name_prefix', type=str)
+
     # bonus
     # Region resource, port, capital should be marked with suffix *, special effects in province regions.
     # Province:
