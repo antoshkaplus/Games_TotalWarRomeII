@@ -1,9 +1,12 @@
 from collections import defaultdict
+import pprint
+from playhouse.shortcuts import model_to_dict
 from antoshka.totalwar.romeii.common import partition
 from antoshka.totalwar.romeii.fixed.db import (list_faction_buildings_names as fixed_db__list_faction_buildings_names)
 from antoshka.totalwar.romeii.fixed.model import db as fixed_db, BuildingSuperchain
-from antoshka.totalwar.romeii.fixed.model.campaign_name import CampaignName, faction_code_campaign_name
+from antoshka.totalwar.romeii.fixed.model.campaign_name import CampaignName, faction_code_campaign_name, CAMPAIGN_NAME_TO_CODE
 from antoshka.totalwar.romeii.view.cli.parser_util import add_parser
+from antoshka.totalwar.romeii.fixed.db.faction_technologies import list_faction_technology_sets, list_faction_technologies
 
 
 
@@ -45,6 +48,24 @@ def faction_stats(args):
         print(e_.political_party, e_.effect_bundle, e_.effect_name, e_.scope, e_.value)
 
 
+def faction_tech_sets(args):
+    campaign = CampaignName(args.campaign)
+    faction = faction_by_name(args.faction, campaign)
+    tech_node_sets = list_faction_technology_sets(faction.code_name, campaign)
+
+    for t_ in tech_node_sets:
+        pprint.pprint(model_to_dict(t_))
+
+
+def faction_tech(args):
+    campaign = CampaignName(args.campaign)
+    faction = faction_by_name(args.faction, campaign)
+    tech = list_faction_technologies(faction.code_name, campaign)
+
+    for t_ in tech:
+        pprint.pprint(model_to_dict(t_))
+
+
 def attach_faction_parser(sps):
     p = sps.add_parser('faction')
     sps = p.add_subparsers()
@@ -54,5 +75,13 @@ def attach_faction_parser(sps):
     p.add_argument('faction', type=str)
 
     p = add_parser(sps, 'stats', func=faction_stats)
+    p.add_argument('campaign', type=str, default='Grand')
+    p.add_argument('faction', type=str)
+
+    p = add_parser(sps, 'tech-sets', func=faction_tech_sets)
+    p.add_argument('campaign', type=str, default='Grand')
+    p.add_argument('faction', type=str)
+
+    p = add_parser(sps, 'tech', func=faction_tech)
     p.add_argument('campaign', type=str, default='Grand')
     p.add_argument('faction', type=str)

@@ -376,6 +376,43 @@ def insert_building_technology(_):
     db.BuildingTechnology.bulk_create(item_list)
 
 
+def insert_technology_node_set(_):
+    path = os.path.join(root_path, 'fixed/technology_node_sets.tsv')
+    df = pd.read_csv(path, sep='\t', comment='#')
+
+    item_list = []
+    for _, row in df.iterrows():
+        row = row.replace({np.nan: None})
+        item = db.TechnologyNodeSet(
+            code_name=row['key'],
+            campaign_code_name=row['campaign_key'],
+            faction=row['faction_key'],
+            culture=row['culture'],
+            subculture=row['subculture'],
+            category=row['technology_category']
+        )
+        item_list.append(item)
+    db.TechnologyNodeSet.bulk_create(item_list)
+
+
+def insert_technology_node(_):
+    path = os.path.join(root_path, 'fixed/technology_nodes.tsv')
+    df = pd.read_csv(path, sep='\t', comment='#')
+
+    item_list = []
+    for _, row in df.iterrows():
+        row = row.replace({np.nan: None})
+        item = db.TechnologyNode(
+            code_name=row['key'],
+            campaign_code_name=row['campaign_key'],
+            faction=row['faction_key'],
+            technology=row['technology_key'],
+            technology_node_set=row['technology_node_set'],
+        )
+        item_list.append(item)
+    db.TechnologyNode.bulk_create(item_list)
+
+
 parser = argparse.ArgumentParser(description='Save file db')
 sps = parser.add_subparsers()
 
@@ -386,6 +423,8 @@ add_parser(sps, 'insert-faction-group-effects', func=insert_faction_group_effect
 add_parser(sps, 'insert-political-party-effects', func=insert_political_party_effects)
 add_parser(sps, 'insert-technologies', func=insert_technologies)
 add_parser(sps, 'insert-building-technology', func=insert_building_technology)
+add_parser(sps, 'insert-technology-node-set', func=insert_technology_node_set)
+add_parser(sps, 'insert-technology-node', func=insert_technology_node)
 
 args = parser.parse_args()
 args.func(args)

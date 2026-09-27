@@ -98,15 +98,14 @@ def attach_province_parser(sps):
     p = sps.add_parser('province')
     sps = p.add_subparsers()
 
-    add_parser(sps, 'list', func=list_provinces)
-
-    p = add_parser(sps, 'add', func=add_province)
-    p.add_argument('province_name_prefix', type=str)
-
+    p = add_parser(sps, 'list', func=list_provinces)
     # bonus
     # Region resource, port, capital should be marked with suffix *, special effects in province regions.
     # Province:
     #   Region: ResourceName, Port, special effects.
     p.add_argument('--bonus',  action='store_true')
+
+    p = add_parser(sps, 'add', func=add_province)
+    p.add_argument('province_name_prefix', type=str)
 
     attach_region_parser(sps)
