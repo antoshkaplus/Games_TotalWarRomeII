@@ -11,4 +11,7 @@ class RegionEffects(BaseModel):
     scope = peewee.CharField()
     value = peewee.IntegerField()
 
-    # need primary key or unique index.
+    class Meta:
+        indexes = (
+            (('region', 'effect_name'), True),
+        )
