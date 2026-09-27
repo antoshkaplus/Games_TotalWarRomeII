@@ -11,6 +11,10 @@ from .region_effects import RegionEffects
 from .region_start_pos import RegionStartPos
 from .building_chain_availability import BuildingChainAvailability
 from .faction_effects import FactionEffect, add_faction_effect_index
+from .technology import Technology
+from .building_technology import BuildingTechnology
+from .technology_node_set import TechnologyNodeSet
+from .technology_node import TechnologyNode
 
 
 def make_tables():
@@ -18,4 +22,6 @@ def make_tables():
     DB.create_tables([BuildingEffect, BuildingUpgrade, Faction,
                       BuildingCulture, BuildingCultureScreen, Building,
                       Province, Region, RegionEffects, RegionStartPos,
-                      BuildingChainAvailability, FactionEffect])
+                      BuildingChainAvailability, FactionEffect,
+                      Technology, BuildingTechnology, TechnologyNodeSet,
+                      TechnologyNode])

@@ -1,6 +1,4 @@
 from antoshka.totalwar.romeii.fixed.model import db as fixed_db
 from .faction_buildings import list_faction_buildings, list_faction_buildings_names
+from .faction_technologies import list_faction_technologies, list_faction_technology_sets
 
-
-def get_province_by_name(province_name: str) -> fixed_db.Province:
-    return fixed_db.Province.select().where(fixed_db.Province.province_name == province_name).get()
