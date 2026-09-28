@@ -1,4 +1,5 @@
 import typing as ty
+from antoshka.totalwar.romeii.common.serializable import Serializable
 from antoshka.totalwar.romeii.fixed.model import db as fixed_db
 from ..stats import Stats
 
@@ -98,7 +99,7 @@ faction_stats = {
 }
 
 
-class ProvinceFactionStats:
+class ProvinceFactionStats(Serializable):
     def __init__(self):
         self.province_stats = Stats()
         self.faction_stats = Stats()
@@ -112,6 +113,23 @@ class ProvinceFactionStats:
         res = ProvinceFactionStats()
         res.province_stats = self.province_stats + other.province_stats
         res.faction_stats = self.faction_stats + other.faction_stats
+        return res
+
+    def to_serializable(self):
+        obj = {}
+        if not self.province_stats.empty:
+            obj['province'] = self.province_stats.to_serializable()
+        if not self.faction_stats.empty:
+            obj['faction'] = self.faction_stats.to_serializable()
+        return obj
+
+    @staticmethod
+    def from_serializable(obj) -> ProvinceFactionStats:
+        res = ProvinceFactionStats()
+        if 'province' in obj:
+            res.province_stats = Stats.from_serializable(obj['province'])
+        if 'faction' in obj:
+            res.faction_stats = Stats.from_serializable(obj['faction'])
         return res
 
 
