@@ -105,9 +105,6 @@ class Solver:
         candidates = solver.candidates
         candidates = list(filter(lambda x: x.stats.food >= min_food and x.stats.order >= min_order, candidates))
 
-        # TODO: should not output it here.
-        print('Apply solver:', len(candidates), None if not candidates else candidates[0])
-
         if candidates:
             return candidates[0]
         return None

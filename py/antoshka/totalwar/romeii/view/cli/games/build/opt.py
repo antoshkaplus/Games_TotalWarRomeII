@@ -1,19 +1,24 @@
-from playhouse.shortcuts import model_to_dict
+from pprint import pprint
 from antoshka.totalwar.romeii.common.datetime import utc_now
 from antoshka.totalwar.romeii.games.model import db as games_db, ProvinceBuild, ProvinceBuildKind
 from antoshka.totalwar.romeii.fixed.model import db as fixed_db
 from antoshka.totalwar.romeii.regionsopt import solver_c1
 from antoshka.totalwar.romeii.view.cli.parser_util import add_parser
 from antoshka.totalwar.romeii.view.cli.games.util import get_selected_game
-from .init_stats_util import make_init_stats
+from antoshka.totalwar.romeii.view.common.games.init_stats import make_init_stats, make_faction_init_stats
 from .foundation_util import gen_foundation
 from antoshka.totalwar.romeii.view.cli.games.util import approx_province_by_name
 from .building_util import list_buildings_by_research_points
+from antoshka.totalwar.romeii.view.common.games.province_build import make_province_build_print_obj
 
 
 def opt_province(args):
     game = get_selected_game()
     buildings = list_buildings_by_research_points()
+    building_bans = set(b_.building_code
+                        for b_ in games_db.BuildingBan.select().where(
+                            games_db.BuildingBan.building_code.in_(list(buildings))))
+    buildings = {c_: b_ for c_, b_ in buildings.items() if c_ not in building_bans}
 
     foundation_id = None
     if args.foundation_id:
@@ -59,26 +64,25 @@ def opt_province(args):
                               solver_c1.SolutionParams(args.min_food, args.min_order),
                               solver_c1.AlgoParams())
     solution = solver_c1.Solver().solve(params)
-    if solution:
-        print(solution)
-        print('Solution Details:')
-        for name, region in zip(region_name, solution.regions):
-            # TODO: need region name here
-            print(name)
-            for building_name in region:
-                # TODO: need building name here
-                print(building_name, params.game_params.buildings[building_name].stats)
+    if not solution:
+        print('Solution not found.')
+        return
 
     regions_build = {region_code: list(build) for region_code, build in zip(region_name, solution.regions)}
+    build = games_db.ProvinceBuild(game=game, ts=utc_now(),
+                                   province_code=foundation_build.province_code,
+                                   build=ProvinceBuild(foundation_build.province_code,
+                                                      regions_build).to_serializable(),
+                                   status=ProvinceBuildKind.Secondary,
+                                   status_ts=utc_now(),
+                                   foundation=fo)
+    faction_stats = make_faction_init_stats(2)
+    print_obj = make_province_build_print_obj(build, faction_stats)
+    print_obj['faction_stats'] = faction_stats.to_serializable()
+    pprint(print_obj)
 
     if not args.no_store:
-        build = games_db.ProvinceBuild.create(game=game, ts=utc_now(),
-                                              province_code=foundation_build.province_code,
-                                              build=ProvinceBuild(foundation_build.province_code,
-                                                                  regions_build).to_serializable(),
-                                              status=ProvinceBuildKind.Secondary,
-                                              status_ts=utc_now(),
-                                              foundation=fo)
+        build.save()
         print('New province build id:', build.id)
 
 

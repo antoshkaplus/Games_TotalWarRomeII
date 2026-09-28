@@ -1,6 +1,7 @@
 from .build import attach_build_parser
 from .game import attach_game_parser
 from .province import attach_province_parser
+from .building_ban import attach_building_ban_parser
 
 
 def attach_games_parser(sps):
@@ -10,6 +11,7 @@ def attach_games_parser(sps):
     attach_game_parser(sps)
     attach_build_parser(sps)
     attach_province_parser(sps)
+    attach_building_ban_parser(sps)
 
 
 
