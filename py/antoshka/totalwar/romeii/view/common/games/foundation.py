@@ -6,14 +6,14 @@ from antoshka.totalwar.romeii.fixed.db import (list_faction_buildings as fixed_d
 from antoshka.totalwar.romeii.view.cli.games.util import get_selected_game, approx_province_by_name
 
 
-def gen_foundation(province_name: str) -> games_db.ProvinceBuild:
+def gen_foundation(province_code: str) -> games_db.ProvinceBuild:
     game = get_selected_game()
     faction_buildings = fixed_db__list_faction_buildings(game.faction_code)
     faction_buildings = list(fixed_db.Building.select().where(fixed_db.Building.code_name.in_(faction_buildings)))
 
     control_plan_regions = list_control_plan_regions(game.id)
 
-    province = approx_province_by_name(province_name)
+    province = fixed_db.Province.get_by_id(province_code)
     regions = [ro for ro in province.regions if ro.code_name in control_plan_regions]
 
     start_pos = fixed_db.RegionStartPos.select().where(fixed_db.RegionStartPos.campaign_code_name == game.campaign_code,
@@ -37,7 +37,18 @@ def gen_foundation(province_name: str) -> games_db.ProvinceBuild:
 
     province_build = ProvinceBuild(province.code_name, province_build)
     return games_db.ProvinceBuild.create(game=game, ts=utc_now(), province_code=province.code_name,
-                                          build=province_build.to_serializable(),
-                                          status=ProvinceBuildKind.Foundation,
-                                          status_ts=utc_now(),
-                                          foundation=None)
+                                         build=province_build.to_serializable(),
+                                         status=ProvinceBuildKind.Foundation,
+                                         status_ts=utc_now(),
+                                         foundation=None)
+
+
+def get_selected_foundation(province_code: str) -> games_db.ProvinceBuild:
+    game = get_selected_game()
+    foundations = list(games_db.ProvinceBuild.select().where((games_db.ProvinceBuild.game == game)
+                                                             & games_db.ProvinceBuild.foundation.is_null()
+                                                             & (games_db.ProvinceBuild.province_code == province_code)).order_by(games_db.ProvinceBuild.status_ts.desc()))
+    if not foundations:
+        # Try to pick up latest foundation for province first.
+        foundations = [gen_foundation(province_code)]
+    return foundations[0]

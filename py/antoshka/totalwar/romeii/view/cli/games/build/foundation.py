@@ -9,11 +9,12 @@ from antoshka.totalwar.romeii.view.cli.games.util import get_selected_game, appr
 from antoshka.totalwar.romeii.fixed.db import list_faction_buildings
 from antoshka.totalwar.romeii.view.common.games.province_build import building_code_to_name, make_province_build_print_obj
 from antoshka.totalwar.romeii.view.common.games.init_stats import make_faction_init_stats
-from .foundation_util import gen_foundation as gen_foundation_
+from antoshka.totalwar.romeii.view.common.games.foundation import gen_foundation as gen_foundation_
 
 
 def gen_foundation(args):
-    foundation = gen_foundation_(args.province)
+    province = approx_province_by_name(args.province)
+    foundation = gen_foundation_(province.code_name)
     pprint(model_to_dict(foundation))
 
 

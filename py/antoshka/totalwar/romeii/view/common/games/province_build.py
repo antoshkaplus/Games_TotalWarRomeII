@@ -37,13 +37,18 @@ def make_regions_print_obj(regions_build: dict) -> list:
     return region_print_obj_list
 
 
-def make_province_build_print_obj(province_build: games_db.ProvinceBuild,
-                                  faction_init_stats: Stats) -> dict:
+def make_province_build_stats(province_build: games_db.ProvinceBuild) -> Stats:
     all_building_codes = list(itertools.chain(*[b_codes for b_codes in province_build.build['regions_build'].values()]))
     unique_building_codes = set(all_building_codes)
     building_stats = list_buildings_stats(unique_building_codes)
     stats = make_province_init_stats(province_build.province_code)
     stats += sum([building_stats[c_].province_stats for c_ in all_building_codes], Stats())
+    return stats
+
+
+def make_province_build_print_obj(province_build: games_db.ProvinceBuild,
+                                  faction_init_stats: Stats) -> dict:
+    stats = make_province_build_stats(province_build)
     province_print_obj = {
         'name': fixed_db.Province.get_by_id(province_build.province_code).province_name,
         'code': province_build.province_code,

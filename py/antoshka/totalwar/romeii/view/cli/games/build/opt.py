@@ -6,7 +6,7 @@ from antoshka.totalwar.romeii.regionsopt import solver_c1
 from antoshka.totalwar.romeii.view.cli.parser_util import add_parser
 from antoshka.totalwar.romeii.view.cli.games.util import get_selected_game
 from antoshka.totalwar.romeii.view.common.games.init_stats import make_init_stats, make_faction_init_stats
-from .foundation_util import gen_foundation
+from antoshka.totalwar.romeii.view.common.games.foundation import gen_foundation, get_selected_foundation
 from antoshka.totalwar.romeii.view.cli.games.util import approx_province_by_name
 from .building_util import list_buildings_by_research_points
 from antoshka.totalwar.romeii.view.common.games.province_build import make_province_build_print_obj
@@ -25,13 +25,8 @@ def opt_province(args):
         foundation_id = args.foundation_id
     else:
         province = approx_province_by_name(args.province_name)
-        foundations = list(games_db.ProvinceBuild.select().where((games_db.ProvinceBuild.game == game)
-                                              & games_db.ProvinceBuild.foundation.is_null()
-                                              & (games_db.ProvinceBuild.province_code == province.code_name)).order_by(games_db.ProvinceBuild.status_ts.desc()))
-        if not foundations:
-            # Try to pick up latest foundation for province first.
-            foundations = [gen_foundation(args.province_name)]
-        foundation_id = foundations[0]
+        foundation = get_selected_foundation(province.code_name)
+        foundation_id = foundation.id
 
     fo = games_db.ProvinceBuild.get_by_id(foundation_id)
     foundation_build = ProvinceBuild.from_serializable(fo.build)
