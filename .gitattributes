@@ -1,3 +1,4 @@
+data_lfs/games.db filter=lfs diff=lfs merge=lfs -text
 data_lfs/fixed.db filter=lfs diff=lfs merge=lfs -text
 data_lfs/saves/*.save filter=lfs diff=lfs merge=lfs -text
 data_lfs/fixed/*.tsv filter=lfs diff=lfs merge=lfs -text
