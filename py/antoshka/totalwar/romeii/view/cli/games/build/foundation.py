@@ -98,6 +98,25 @@ def add_building(args):
     build.build = province_build.to_serializable()
     build.save()
 
+
+def remove_building(args):
+    game = get_selected_game()
+    build = games_db.ProvinceBuild.get_by_id(args.foundation_id)
+    if build.game.id != game.id:
+        raise RuntimeError()
+    if build.status != ProvinceBuildKind.Foundation:
+        raise RuntimeError()
+
+    all_building_codes = list_faction_buildings(game.faction_code, CAMPAIGN_CODE_TO_NAME[game.campaign_code])
+    if args.building_code not in all_building_codes:
+        raise RuntimeError()
+
+    province_build = ProvinceBuild.from_serializable(build.build)
+    province_build.regions_build[args.region_code].remove(args.building_code)
+    
+    build.build = province_build.to_serializable()
+    build.save()
+
     
 def select_foundation(args):
     game = get_selected_game()
@@ -129,6 +148,11 @@ def attach_foundation_parser(sps):
     p.add_argument('to_building_code', type=str)
 
     p = add_parser(sps, 'add', func=add_building)
+    p.add_argument('foundation_id', type=int)
+    p.add_argument('region_code', type=str)
+    p.add_argument('building_code', type=str)
+
+    p = add_parser(sps, 'remove', func=remove_building)
     p.add_argument('foundation_id', type=int)
     p.add_argument('region_code', type=str)
     p.add_argument('building_code', type=str)
